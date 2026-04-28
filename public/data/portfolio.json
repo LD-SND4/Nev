@@ -1,0 +1,467 @@
+{
+  "profile": {
+    "name": "Leonardo Diaz",
+    "title": "Senior Frontend Developer | React · Angular · TypeScript | Gen AI & LLM Integration | JavaScript · Node.js",
+    "summary": "Senior Frontend Developer with 8+ years of experience building modern, high-performance web applications for international teams and U.S.-based companies. I specialize in responsive, accessible interfaces with strong frontend architecture and growing Gen AI integration work.",
+    "about": "I have worked across the full frontend lifecycle: architecture decisions, component systems, performance optimization, and close collaboration with UX, backend, and product teams. I am comfortable owning complex features end to end and communicating clearly in English across remote, cross-functional environments. What drives me is building software that is both technically solid and genuinely useful, especially where modern frontend meets AI-assisted development."
+  },
+  "contact": {
+    "email": "leodiazgarcia4050@gmail.com",
+    "phone": "+58 04122968481",
+    "linkedin": "https://www.linkedin.com/in/leoddev/",
+    "whatsapp": "+58 04122968481"
+  },
+  "experiences": [
+    {
+      "role": "Frontend Developer",
+      "company": "Innovid",
+      "location": "Remote - Venezuela",
+      "period": "Jun 2025 - Feb 2026",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "Node.js", "Express", "Python"],
+      "highlights": [
+        "Built custom HTML5 advertising formats for production campaigns across multiple browsers and devices.",
+        "Created reusable JavaScript component patterns that reduced banner implementation time.",
+        "Improved animation performance and frontend rendering quality for campaign delivery.",
+        "Connected frontend rendering flows with backend APIs and automated asset-processing steps."
+      ]
+    },
+    {
+      "role": "Freelance Frontend Development",
+      "company": "Independent",
+      "location": "Remote",
+      "period": "Jan 2018 - Jun 2025",
+      "technologies": ["JavaScript", "TypeScript", "HTML5", "CSS3", "Angular", "React", "Node.js", "Gen AI"],
+      "highlights": [
+        "Delivered frontend solutions for a wide range of client needs, from websites to immersive digital interfaces.",
+        "Translated client visions into tangible user experiences with a strong focus on performance and usability.",
+        "Worked across the full development cycle, from planning and architecture to launch and iteration.",
+        "Continued expanding into AI-assisted workflows and modern frontend tooling while maintaining client delivery."
+      ]
+    },
+    {
+      "role": "FE Developer UI/UX",
+      "company": "GlobalLogic",
+      "location": "Buenos Aires, Argentina",
+      "period": "Jul 2023 - Aug 2024",
+      "technologies": ["React", "Angular", "UI/UX", "Agile"],
+      "highlights": [
+        "Implemented frontend/UI work for product-facing features in a cross-functional delivery environment.",
+        "Supported clean user-facing experiences with an emphasis on detail and maintainability.",
+        "Worked with distributed teams and agile delivery practices across client engagements."
+      ]
+    },
+    {
+      "role": "Frontend Web Developer",
+      "company": "Altimetrik",
+      "location": "Argentina",
+      "period": "Jun 2021 - Nov 2022",
+      "technologies": ["Angular", "Design Systems", "Static Sites", "Debugging"],
+      "highlights": [
+        "Collaborated closely with design teams and development teams during a dynamic product environment.",
+        "Contributed to redesign and refinement work, including homepage and static page implementation.",
+        "Handled debugging and frontend improvements as part of a broader rebranding effort."
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "Inclusion The Cloud Company",
+      "location": "Argentina",
+      "period": "Feb 2020 - Jul 2021",
+      "technologies": ["Angular", "UI", "UX", "Components"],
+      "highlights": [
+        "Owned frontend implementation tasks focused on component assembly and interface polish.",
+        "Contributed directly to better UI and UX outcomes across product interfaces.",
+        "Helped structure frontend work for consistent user-facing delivery."
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "MRM/McCann",
+      "location": "Buenos Aires, Argentina",
+      "period": "Jun 2019 - Feb 2020",
+      "technologies": ["Frontend", "HTML5", "Agile"],
+      "highlights": [
+        "Contributed frontend development work in a collaborative agency environment.",
+        "Supported delivery across marketing-oriented digital products and experiences."
+      ]
+    },
+    {
+      "role": "Winxer Web Development Teacher - Via Online",
+      "company": "Proyecto Winxer",
+      "location": "Peru",
+      "period": "Apr 2018 - Feb 2020",
+      "technologies": ["Bootstrap", "HTML", "CSS", "JavaScript", "Communication"],
+      "highlights": [
+        "Created educational video material and guidance for Bootstrap, HTML, CSS, and JavaScript.",
+        "Supported learners in practical web development topics through online instruction."
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "6C Marketing",
+      "location": "Argentina",
+      "period": "Feb 2019 - Jun 2019",
+      "technologies": ["HTML", "CSS", "Sass", "Less", "Node.js", "Bootstrap", "Python", "C#"],
+      "highlights": [
+        "Worked as a detail-oriented web developer after graduating from Computer Science.",
+        "Delivered frontend work using a broad stack including HTML, CSS, Node.js, Bootstrap, and Python."
+      ]
+    },
+    {
+      "role": "Uipath Trainee Developer",
+      "company": "Nybble Group",
+      "location": "Argentina",
+      "period": "Dec 2018 - Jan 2019",
+      "technologies": ["Communication", "HTML5"],
+      "highlights": [
+        "Started in a trainee development role while growing practical software-delivery skills.",
+        "Built early professional experience in structured team environments."
+      ]
+    },
+    {
+      "role": "Assistant IT & Web Programmer",
+      "company": "Universidad Nueva Esparta",
+      "location": "Caracas, Distrito Federal, Venezuela",
+      "period": "Sep 2017 - Aug 2018",
+      "technologies": ["Communication", "HTML5", "Web Maintenance"],
+      "highlights": [
+        "Supported website modifications and creation of web pages.",
+        "Handled hardware and software installation, setup, and updates.",
+        "Maintained service equipment and produced diagnostics and repair reports."
+      ]
+    },
+    {
+      "role": "IT Projects Assistant - Programmer Junior",
+      "company": "Universidad Nueva Esparta",
+      "location": "Caracas, Distrito Federal, Venezuela",
+      "period": "May 2016 - Feb 2018",
+      "technologies": ["Communication", "HTML5", "Support"],
+      "highlights": [
+        "Contributed to junior programming and IT project support activities.",
+        "Built early experience with web-related work and technical operations."
+      ]
+    },
+    {
+      "role": "Data & Math Specialist",
+      "company": "Strut Corp",
+      "location": "Utah, United States - Remote",
+      "period": "May 2025 - Present",
+      "technologies": ["SQL", "Data Scraping", "Automation", "REST APIs", "Playwright", "Python"],
+      "highlights": [
+        "Built data extraction and automation flows for analytics and business monitoring tasks.",
+        "Used SQL and scraping pipelines to clean and structure decision-ready datasets.",
+        "Collaborated remotely on data quality, automation reliability, and reporting workflows."
+      ]
+    },
+    {
+      "role": "Data Analyst",
+      "company": "AnnexBox",
+      "location": "New York, United States - Remote",
+      "period": "Jul 2024 - Mar 2025",
+      "technologies": ["Data Science", "Web Scraping", "Python", "SQL", "ETL"],
+      "highlights": [
+        "Analyzed operational and web datasets to produce practical business insights.",
+        "Designed scraping and ETL routines to consolidate data from multiple sources.",
+        "Improved reporting quality through cleaner transformations and repeatable workflows."
+      ]
+    },
+    {
+      "role": "Technical Assistant",
+      "company": "Universidad Nueva Esparta",
+      "location": "Venezuela - On-site",
+      "period": "Jun 2018 - Dec 2023",
+      "technologies": ["Support", "Spanish", "Operations", "QA"],
+      "highlights": [
+        "Provided technical support and hands-on assistance across internal operations.",
+        "Worked with cross-functional teams to keep services and systems running smoothly.",
+        "Developed communication and coordination skills across technical and non-technical users."
+      ]
+    },
+    {
+      "role": "Search Engine Optimization Copywriter",
+      "company": "Yore Oyster",
+      "location": "Canada - Remote",
+      "period": "Jun 2020 - Jan 2023",
+      "technologies": ["SEO", "Google Sheets", "Excel", "Research", "Automation"],
+      "highlights": [
+        "Wrote SEO-optimized content for personal finance publications.",
+        "Used Sheets and Excel to build content planning and quality-control routines.",
+        "Contributed to scalable writing workflows with data-supported content decisions."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "years": 8,
+      "note": "Core frontend programming across client websites, applications, advertising formats, and modern UI work.",
+      "x": 46,
+      "y": 43,
+      "connectsTo": ["TypeScript", "React", "Node.js", "Gen AI"]
+    },
+    {
+      "name": "TypeScript",
+      "years": 5,
+      "note": "Typed application architecture for Angular and React projects in production environments.",
+      "x": 62,
+      "y": 29,
+      "connectsTo": ["Angular", "React"]
+    },
+    {
+      "name": "HTML5",
+      "years": 8,
+      "note": "Semantic structure for web applications, landing pages, educational content, and HTML5 ad experiences.",
+      "x": 17,
+      "y": 42,
+      "connectsTo": ["CSS3", "JavaScript", "Responsive"]
+    },
+    {
+      "name": "CSS3",
+      "years": 8,
+      "note": "Responsive layouts, component styling, animation work, and polished visual frontend delivery.",
+      "x": 31,
+      "y": 26,
+      "connectsTo": ["SASS", "Tailwind", "JavaScript"]
+    },
+    {
+      "name": "SASS",
+      "years": 6,
+      "note": "Maintainable style systems and scalable frontend styling workflows.",
+      "x": 20,
+      "y": 63,
+      "connectsTo": ["CSS3", "Bootstrap"]
+    },
+    {
+      "name": "Angular",
+      "years": 6,
+      "note": "Production Angular work across enterprise products, migrations, UX-focused features, and maintainable components.",
+      "x": 78,
+      "y": 44,
+      "connectsTo": ["TypeScript", "REST APIs", "Material UI"]
+    },
+    {
+      "name": "React",
+      "years": 5,
+      "note": "Frontend product development, UI implementation, and modern reusable component work.",
+      "x": 67,
+      "y": 62,
+      "connectsTo": ["TypeScript", "Next.js", "Material UI"]
+    },
+    {
+      "name": "Next.js",
+      "years": 2,
+      "note": "Modern React-based application and website delivery for production-ready interfaces.",
+      "x": 83,
+      "y": 68,
+      "connectsTo": ["React", "TypeScript"]
+    },
+    {
+      "name": "Node.js",
+      "years": 4,
+      "note": "Backend services, Express APIs, automation pipelines, and practical full-stack delivery.",
+      "x": 49,
+      "y": 68,
+      "connectsTo": ["Express", "REST APIs", "Python"]
+    },
+    {
+      "name": "Express",
+      "years": 4,
+      "note": "REST API routes and lightweight backend layers to support frontend features.",
+      "x": 34,
+      "y": 78,
+      "connectsTo": ["Node.js", "REST APIs"]
+    },
+    {
+      "name": "Python",
+      "years": 3,
+      "note": "Automation, scripting, and production support for faster release workflows.",
+      "x": 57,
+      "y": 83,
+      "connectsTo": ["Node.js", "CI/CD"]
+    },
+    {
+      "name": "REST APIs",
+      "years": 5,
+      "note": "Frontend/backend integration, contract alignment, and application data flow design.",
+      "x": 43,
+      "y": 18,
+      "connectsTo": ["Angular", "Node.js", "Express"]
+    },
+    {
+      "name": "Bootstrap",
+      "years": 5,
+      "note": "Fast responsive UI delivery and teaching material for practical frontend development.",
+      "x": 18,
+      "y": 22,
+      "connectsTo": ["CSS3", "Responsive"]
+    },
+    {
+      "name": "Tailwind",
+      "years": 3,
+      "note": "Utility-first styling for fast iteration and clean component spacing.",
+      "x": 31,
+      "y": 51,
+      "connectsTo": ["CSS3", "Responsive"]
+    },
+    {
+      "name": "Material UI",
+      "years": 3,
+      "note": "Structured component-library work across modern frontend projects.",
+      "x": 76,
+      "y": 23,
+      "connectsTo": ["Angular", "React"]
+    },
+    {
+      "name": "CI/CD",
+      "years": 3,
+      "note": "Deployment automation with practical pipelines that reduce release friction.",
+      "x": 64,
+      "y": 15,
+      "connectsTo": ["GitHub Actions", "AWS", "Docker"]
+    },
+    {
+      "name": "GitHub Actions",
+      "years": 3,
+      "note": "Automated checks and deployment workflows for production projects.",
+      "x": 77,
+      "y": 82,
+      "connectsTo": ["CI/CD", "Vercel"]
+    },
+    {
+      "name": "Vercel",
+      "years": 3,
+      "note": "Frontend deployments and hosting workflows for quick delivery cycles.",
+      "x": 88,
+      "y": 54,
+      "connectsTo": ["CI/CD", "Next.js"]
+    },
+    {
+      "name": "AWS",
+      "years": 1,
+      "note": "Cloud and deployment exposure used alongside broader DevOps workflows.",
+      "x": 87,
+      "y": 19,
+      "connectsTo": ["CI/CD", "Docker"]
+    },
+    {
+      "name": "Docker",
+      "years": 1,
+      "note": "Foundational container usage in development and delivery workflows.",
+      "x": 73,
+      "y": 10,
+      "connectsTo": ["AWS", "CI/CD"]
+    },
+    {
+      "name": "Responsive",
+      "years": 8,
+      "note": "Interfaces designed to work cleanly across mobile, tablet, and desktop use cases.",
+      "x": 29,
+      "y": 87,
+      "connectsTo": ["HTML5", "CSS3", "Client Communication"]
+    },
+    {
+      "name": "Client Communication",
+      "years": 6,
+      "note": "Discovery sessions, requirement translation, and clear updates for remote collaboration.",
+      "x": 52,
+      "y": 55,
+      "connectsTo": ["Ownership", "Collaboration"]
+    },
+    {
+      "name": "Ownership",
+      "years": 6,
+      "note": "Comfortable owning complex features end to end in remote cross-functional teams.",
+      "x": 57,
+      "y": 8,
+      "connectsTo": ["Collaboration", "Continuous Learning"]
+    },
+    {
+      "name": "Collaboration",
+      "years": 6,
+      "note": "Hands-on work with UX, backend, product, and distributed delivery teams.",
+      "x": 71,
+      "y": 74,
+      "connectsTo": ["Client Communication"]
+    },
+    {
+      "name": "Continuous Learning",
+      "years": 8,
+      "note": "Strong habit of expanding into new frontend, AI, and workflow capabilities over time.",
+      "x": 41,
+      "y": 91,
+      "connectsTo": ["Ownership", "Gen AI"]
+    },
+    {
+      "name": "Gen AI",
+      "years": 2,
+      "note": "Focused on integrating generative AI and LLM-assisted development into real production workflows.",
+      "x": 88,
+      "y": 34,
+      "connectsTo": ["Continuous Learning", "JavaScript", "Node.js"]
+    },
+    {
+      "name": "Data Scientist",
+      "years": 2,
+      "note": "Applies analytical and statistical thinking to turn raw data into practical product decisions.",
+      "x": 62,
+      "y": 40,
+      "connectsTo": ["SQL", "ETL", "Automation"]
+    },
+    {
+      "name": "QA Engineer",
+      "years": 2,
+      "note": "Builds validation flows and quality checks to reduce defects and increase delivery confidence.",
+      "x": 76,
+      "y": 58,
+      "connectsTo": ["Automation", "Selenium", "Playwright"]
+    },
+    {
+      "name": "SQL",
+      "years": 3,
+      "note": "Creates structured queries and transformations for operational, analytical, and reporting datasets.",
+      "x": 47,
+      "y": 35,
+      "connectsTo": ["ETL", "Data Scientist", "Python"]
+    },
+    {
+      "name": "Selenium",
+      "years": 2,
+      "note": "Uses browser automation for repetitive validation and scraping-related workflows.",
+      "x": 84,
+      "y": 44,
+      "connectsTo": ["QA Engineer", "Automation"]
+    },
+    {
+      "name": "ETL",
+      "years": 2,
+      "note": "Designs extract-transform-load routines to normalize and deliver cleaner business data.",
+      "x": 54,
+      "y": 22,
+      "connectsTo": ["SQL", "Data Scientist", "Automation"]
+    },
+    {
+      "name": "Automation",
+      "years": 3,
+      "note": "Automates data and operational tasks to improve speed, repeatability, and reliability.",
+      "x": 68,
+      "y": 26,
+      "connectsTo": ["ETL", "QA Engineer", "Web Scraping"]
+    },
+    {
+      "name": "Web Scraping",
+      "years": 3,
+      "note": "Collects and structures web data through scalable extraction workflows.",
+      "x": 73,
+      "y": 34,
+      "connectsTo": ["Python", "SQL", "Data Scientist", "Automation"]
+    },
+    {
+      "name": "Playwright",
+      "years": 1,
+      "note": "Uses browser automation for modern testing and data-collection workflows.",
+      "x": 88,
+      "y": 29,
+      "connectsTo": ["QA Engineer", "Automation"]
+    }
+  ]
+}

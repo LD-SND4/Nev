@@ -1,0 +1,368 @@
+<header class="site-header">
+  <a class="brand" href="#intro" aria-label="Go to Nev Research introduction">Nev Research</a>
+
+  <button class="nav-toggle" type="button" (click)="toggleNav()" [attr.aria-expanded]="navOpen" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="main-nav" [class.is-open]="navOpen" aria-label="Main navigation">
+    <a href="#about" (click)="closeNav()">About</a>
+    <a href="#experience" (click)="closeNav()">Experience</a>
+    <a href="#skills" (click)="closeNav()">Skill Maps</a>
+    <a href="#calculator" (click)="closeNav()">Calculator</a>
+    <a href="#team" (click)="closeNav()">Core Team</a>
+  </nav>
+
+  <div class="contact-menu">
+    <button class="contact-button" type="button" (click)="toggleContact()" [attr.aria-expanded]="contactOpen">
+      Contact
+    </button>
+
+    @if (contactOpen) {
+      <aside class="contact-popover" [class.is-closing]="contactClosing" aria-label="Contact information">
+        <p class="contact-popover-title">Let&apos;s talk about your project</p>
+        <div class="contact-actions">
+          <a class="contact-card" [href]="'mailto:' + contact.email">
+            <strong>Email</strong>
+            <span>{{ contact.email }}</span>
+          </a>
+          @if (contact.linkedin) {
+            <a class="contact-card" [href]="contact.linkedin" target="_blank" rel="noreferrer">
+              <strong>LinkedIn</strong>
+              <span>View profile</span>
+            </a>
+          }
+          @if (whatsappLink && contact.phone) {
+            <a class="contact-card" [href]="whatsappLink" target="_blank" rel="noreferrer">
+              <strong>WhatsApp</strong>
+              <span>{{ contact.phone }}</span>
+            </a>
+          }
+        </div>
+      </aside>
+    }
+  </div>
+</header>
+
+<main>
+  <section class="hero section-shell" id="intro">
+    <div class="hero-copy">
+      <h1>Software, SaaS platforms and data workflows built for teams that need momentum.</h1>
+      <div class="hero-actions">
+        <a class="primary-link" href="#experience">View capabilities</a>
+        <a class="secondary-link" href="#calculator">Estimate a project</a>
+      </div>
+    </div>
+
+    <aside class="hero-support" aria-label="Nev Research service focus">
+      <p>Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.</p>
+      <div class="hero-service-grid">
+        <span>Frontend engineering</span>
+        <span>Backend systems</span>
+        <span>Data analysis</span>
+        <span>QA automation</span>
+        <span>Maintenance</span>
+      </div>
+      <div class="hero-actions">
+        <a class="secondary-link" href="#about">How we work</a>
+      </div>
+    </aside>
+
+  </section>
+
+  <section class="about section-shell" id="about">
+    <div>
+      <p class="eyebrow">About</p>
+      <h2>Practical SaaS delivery for teams that need reliable software.</h2>
+    </div>
+    <p>Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.</p>
+  </section>
+
+  <section class="experience section-shell" id="experience">
+    <div class="section-heading">
+      <p class="eyebrow">Client results</p>
+      <h2>Delivery proof across product, data and software teams.</h2>
+    </div>
+
+    <div class="results-grid">
+      @for (item of experiences; track item.company + item.role + item.period) {
+        <article class="result-card">
+          <div class="result-card-topline">
+            <span>{{ item.period }}</span>
+            <span>{{ item.location }}</span>
+          </div>
+
+          <div>
+            <h3>{{ item.company }}</h3>
+            <p>{{ item.role }}</p>
+          </div>
+
+          @if (item.technologies?.length) {
+            <div class="tech-list" aria-label="Skills used">
+              @for (technology of item.technologies; track technology) {
+                <span>{{ technology }}</span>
+              }
+            </div>
+          }
+
+          <div class="result-details">
+            <strong>Results and delivery</strong>
+            <ul>
+              @for (point of item.highlights; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="skills section-shell" id="skills">
+    <div class="section-heading">
+      <p class="eyebrow">Capabilities</p>
+      <div class="skills-heading-row">
+        <h2>Connected skills maps</h2>
+        <div class="skills-global-hint">
+          <span>Drag to rotate</span>
+          <span>Hover skills for details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="triple-globes">
+      <article class="globe-panel globe-panel-technical">
+        <header>
+          <h3>Technical network</h3>
+          <p>Frontend, backend, platform and tooling capabilities.</p>
+        </header>
+        <div class="skill-globe" #technicalGlobeFrame aria-label="Interactive technical skills network">
+          <canvas #technicalGlobeCanvas class="skill-globe-canvas" data-testid="technical-skill-globe-canvas"></canvas>
+          @if (hoveredGlobe === 'technical' && hoveredSkill && hoveredSkillDetails) {
+            <aside class="skill-popover" [style]="skillPopoverStyle">
+              <strong>{{ hoveredSkill.name }}</strong>
+              <span>{{ hoveredSkill.years }} years used</span>
+              <p>{{ hoveredSkill.note }}</p>
+              <dl>
+                <div>
+                  <dt>Matched experience</dt>
+                  <dd>{{ hoveredSkillDetails.projectCount }}</dd>
+                </div>
+                <div>
+                  <dt>Connected to</dt>
+                  <dd>{{ hoveredSkillDetails.related.join(', ') || 'Core capability' }}</dd>
+                </div>
+              </dl>
+              @if (hoveredSkillDetails.projects.length) {
+                <ul>
+                  @for (project of hoveredSkillDetails.projects; track project) {
+                    <li>{{ project }}</li>
+                  }
+                </ul>
+              }
+            </aside>
+          }
+        </div>
+      </article>
+
+      <article class="globe-panel globe-panel-delivery">
+        <header>
+          <h3>Delivery network</h3>
+          <p>Collaboration, ownership and cross-functional execution skills.</p>
+        </header>
+        <div class="skill-globe" #deliveryGlobeFrame aria-label="Interactive delivery skills network">
+          <canvas #deliveryGlobeCanvas class="skill-globe-canvas" data-testid="delivery-skill-globe-canvas"></canvas>
+          @if (hoveredGlobe === 'delivery' && hoveredSkill && hoveredSkillDetails) {
+            <aside class="skill-popover" [style]="skillPopoverStyle">
+              <strong>{{ hoveredSkill.name }}</strong>
+              <span>{{ hoveredSkill.years }} years used</span>
+              <p>{{ hoveredSkill.note }}</p>
+              <dl>
+                <div>
+                  <dt>Matched experience</dt>
+                  <dd>{{ hoveredSkillDetails.projectCount }}</dd>
+                </div>
+                <div>
+                  <dt>Connected to</dt>
+                  <dd>{{ hoveredSkillDetails.related.join(', ') || 'Core capability' }}</dd>
+                </div>
+              </dl>
+              @if (hoveredSkillDetails.projects.length) {
+                <ul>
+                  @for (project of hoveredSkillDetails.projects; track project) {
+                    <li>{{ project }}</li>
+                  }
+                </ul>
+              }
+            </aside>
+          }
+        </div>
+      </article>
+
+      <article class="globe-panel globe-panel-upcoming">
+        <header>
+          <h3>Investing technologies</h3>
+          <p>Upcoming capability map for future R&amp;D and product investments.</p>
+        </header>
+        <div class="skill-globe skill-globe-upcoming" aria-label="Upcoming investing technologies network">
+          <div class="upcoming-orb" aria-hidden="true"></div>
+          <div class="upcoming-overlay">
+            <strong>Roadmap in progress</strong>
+            <span>This map will activate in the next release.</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="calculator section-shell" id="calculator">
+    <div class="section-heading">
+      <p class="eyebrow">Calculator</p>
+      <h2>Plan your product scope and delivery.</h2>
+    </div>
+
+    <div class="calculator-shell">
+      <div class="calculator-inputs">
+        <label class="budget-field">
+          <span>Client budget</span>
+          <div class="budget-input" [class]="'budget-tone-' + budgetTone" [style]="budgetSliderStyle">
+            <strong>{{ formattedBudget }}</strong>
+            <div class="budget-slider">
+              <input type="range" min="2000" max="7000" step="500" [(ngModel)]="calculator.budget" />
+              <div class="budget-orbs" aria-hidden="true">
+                @for (value of [2000, 3000, 4000, 5000, 6000, 7000]; track value) {
+                  <span [class.is-active]="calculator.budget >= value"></span>
+                }
+              </div>
+            </div>
+            <div class="budget-scale" aria-hidden="true">
+              <span>$2k</span>
+              <span>$4.5k</span>
+              <span>$7k</span>
+            </div>
+          </div>
+        </label>
+
+        <p class="calculator-note">Set a working investment range to understand how much scope we can comfortably cover.</p>
+
+        <div class="task-picker">
+          <h3>Which tasks are in scope?</h3>
+          <div class="task-list">
+            @for (task of calculatorTasks; track task.key) {
+              <label class="task-card" [class.task-card-data]="task.isData" [class.is-selected]="calculator[task.key]">
+                <input type="checkbox" [(ngModel)]="calculator[task.key]" />
+                <span class="task-check" aria-hidden="true"></span>
+                <span class="task-content">
+                  <strong>{{ task.label }}</strong>
+                  <em>{{ task.category }}</em>
+                  <span>{{ task.description }}</span>
+                </span>
+              </label>
+            }
+          </div>
+          @if (!selectedTaskCount) {
+            <aside class="scope-help-popout">
+              <strong>Not sure what to request yet?</strong>
+              <p>Tell us what you want to improve, launch, automate or understand. Nev Research can help shape the scope, recommend the right technical path, prioritize the first version and guide your project from idea to working software.</p>
+              <a [href]="'mailto:' + contact.email + '?subject=Project%20Guidance%20Request'">Request project guidance</a>
+            </aside>
+          }
+        </div>
+
+        <div class="timeline-picker">
+          <h3>What timeline are we targeting?</h3>
+          <div class="timeline-inputs">
+            <div class="timeline-stepper">
+              <button type="button" (click)="adjustTimeline(-1)" aria-label="Decrease timeline">-</button>
+              <input type="number" min="1" max="24" [(ngModel)]="calculator.timelineValue" aria-label="Timeline amount" />
+              <button type="button" (click)="adjustTimeline(1)" aria-label="Increase timeline">+</button>
+            </div>
+            <div class="timeline-units" role="group" aria-label="Timeline unit">
+              @for (unit of ['days', 'weeks', 'months']; track unit) {
+                <button type="button" [class.is-selected]="calculator.timelineUnit === unit" (click)="calculator.timelineUnit = unit">
+                  {{ unit }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <p class="calculator-footnote">This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.</p>
+      </div>
+
+      <aside class="calculator-summary">
+        <p class="summary-label">Estimated project range</p>
+        <strong class="summary-total">{{ estimateRange }}</strong>
+
+        <div class="summary-divider"></div>
+
+        <dl class="summary-breakdown">
+          <div>
+            <dt>Available budget</dt>
+            <dd>{{ formattedBudget }}</dd>
+          </div>
+          <div>
+            <dt>Selected workstreams</dt>
+            <dd>{{ selectedTaskCount }}</dd>
+          </div>
+          <div>
+            <dt>Requested timeline</dt>
+            <dd>{{ formattedTimeline }}</dd>
+          </div>
+          <div>
+            <dt>Budget fit</dt>
+            <dd>{{ budgetGap }}</dd>
+          </div>
+        </dl>
+
+        <div class="summary-status">
+          <p>{{ budgetStatus }}</p>
+          <span>{{ suggestedTimeline }}</span>
+        </div>
+
+        <div class="summary-tags">
+          @for (task of selectedTaskLabels; track task) {
+            <span>{{ task }}</span>
+          }
+        </div>
+
+        <a class="summary-action" [href]="'mailto:' + contact.email + '?subject=Project%20Estimate%20Request'">
+          Start the conversation
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="team section-shell" id="team">
+    <div class="section-heading">
+      <p class="eyebrow">Core team</p>
+      <h2>People behind Nev Research delivery.</h2>
+    </div>
+
+    <div class="team-grid">
+      <article class="team-profile team-profile-founder">
+        <figure>
+          <img src="content/founder/7bba4909-7c5f-453c-829b-4bb287222216.png" alt="Leonardo Diaz, Founder of Nev Research" />
+        </figure>
+        <div>
+          <p class="eyebrow">Founder</p>
+          <h3>Leonardo Diaz</h3>
+          <p>Founder of Nev Research, focused on product architecture, frontend systems, client delivery, AI-assisted workflows, and long-term software quality.</p>
+        </div>
+      </article>
+
+      <article class="team-profile team-profile-engineer">
+        <figure>
+          <img src="content/engineers/34362f85-3e52-440c-a32b-f83dd5f8a5fa.png" alt="Data engineer at Nev Research" />
+        </figure>
+        <div>
+          <p class="eyebrow">Data Engineer</p>
+          <h3>Data Engineering</h3>
+          <p>Supports data analysis, Python automation, SQL workflows, QA validation, ETL routines, web scraping, and technical operations for SaaS clients.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
