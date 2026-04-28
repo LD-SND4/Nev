@@ -420,17 +420,79 @@ main {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+}
 
-  span {
-    min-height: 42px;
-    padding: 11px 12px;
-    border: 1px solid rgba(72, 245, 255, 0.13);
+.hero-service-chip {
+  position: relative;
+  min-height: 42px;
+  padding: 11px 12px;
+  border: 1px solid rgba(72, 245, 255, 0.13);
+  border-radius: 8px;
+  background: rgba(7, 15, 27, 0.46);
+  color: #dce7f7;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: left;
+  cursor: help;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background 180ms ease;
+
+  > span {
+    position: relative;
+    z-index: 1;
+  }
+
+  em {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    z-index: 30;
+    width: min(280px, 72vw);
+    padding: 14px;
+    border: 1px solid rgba(72, 245, 255, 0.24);
     border-radius: 8px;
-    background: rgba(7, 15, 27, 0.46);
-    color: #dce7f7;
+    background:
+      linear-gradient(135deg, rgba(72, 245, 255, 0.1), rgba(132, 255, 176, 0.06)),
+      #091220;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36), 0 0 28px rgba(72, 245, 255, 0.1);
+    color: #bcd0f0;
     font-size: 0.82rem;
-    font-weight: 900;
-    line-height: 1.25;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.45;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 8px) scale(0.98);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  em::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 12px;
+    height: 12px;
+    border-right: 1px solid rgba(72, 245, 255, 0.24);
+    border-bottom: 1px solid rgba(72, 245, 255, 0.24);
+    background: #091220;
+    transform: translate(-50%, -6px) rotate(45deg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    z-index: 20;
+    border-color: rgba(72, 245, 255, 0.38);
+    background: rgba(7, 15, 27, 0.72);
+    box-shadow: 0 0 26px rgba(72, 245, 255, 0.12);
+    transform: translateY(-2px);
+    outline: 0;
+  }
+
+  &:hover em,
+  &:focus-visible em {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
   }
 }
 
@@ -1738,6 +1800,22 @@ main {
 
   .hero-service-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-service-chip em {
+    left: 0;
+    right: 0;
+    width: auto;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  .hero-service-chip:hover em,
+  .hero-service-chip:focus-visible em {
+    transform: translateY(0) scale(1);
+  }
+
+  .hero-service-chip em::after {
+    left: 22px;
   }
 
   .hero-actions {

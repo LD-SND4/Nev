@@ -28,11 +28,26 @@
     "support": "Nev Research diseña, construye y da soporte a productos digitales prácticos para fundadores, agencias y equipos operativos.",
     "supportCta": "Cómo trabajamos",
     "services": [
-      "Desarrollo frontend",
-      "Sistemas backend",
-      "Análisis de datos",
-      "Automatización QA",
-      "Mantenimiento"
+      {
+        "label": "Desarrollo frontend",
+        "description": "La parte visible de tu producto: páginas, dashboards, formularios e interfaces que usan tus clientes."
+      },
+      {
+        "label": "Sistemas backend",
+        "description": "La lógica detrás del producto: APIs, autenticación, manejo de datos e integraciones."
+      },
+      {
+        "label": "Análisis de datos",
+        "description": "Convertimos información cruda en insights, reportes y decisiones útiles para el negocio."
+      },
+      {
+        "label": "Automatización QA",
+        "description": "Pruebas automatizadas que ayudan a detectar errores antes de que los encuentren tus usuarios o clientes."
+      },
+      {
+        "label": "Mantenimiento",
+        "description": "Mejoras continuas, correcciones y soporte técnico después del lanzamiento."
+      }
     ]
   },
   "about": {

@@ -28,11 +28,26 @@
     "support": "Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.",
     "supportCta": "How we work",
     "services": [
-      "Frontend engineering",
-      "Backend systems",
-      "Data analysis",
-      "QA automation",
-      "Maintenance"
+      {
+        "label": "Frontend engineering",
+        "description": "The visible part of your product: pages, dashboards, forms and interfaces your clients use."
+      },
+      {
+        "label": "Backend systems",
+        "description": "The logic behind the product: APIs, authentication, data handling and integrations."
+      },
+      {
+        "label": "Data analysis",
+        "description": "Turning raw information into useful insights, reports and decisions for the business."
+      },
+      {
+        "label": "QA automation",
+        "description": "Automated checks that help catch bugs before your users or clients find them."
+      },
+      {
+        "label": "Maintenance",
+        "description": "Ongoing improvements, fixes and technical support after launch."
+      }
     ]
   },
   "about": {

@@ -47,7 +47,7 @@
     </div>
 
     <button class="language-toggle" type="button" (click)="switchLanguage()" [attr.aria-label]="content.language.switchTo">
-      <span class="language-flag">{{ content.language.flag }}</span>
+      <span class="language-flag">{{ regionCode }}</span>
       <span>{{ content.language.code }}</span>
     </button>
   </div>
@@ -67,7 +67,10 @@
       <p>{{ content.hero.support }}</p>
       <div class="hero-service-grid">
         @for (service of content.hero.services; track service) {
-          <span>{{ service }}</span>
+          <button class="hero-service-chip" type="button">
+            <span>{{ service.label }}</span>
+            <em>{{ service.description }}</em>
+          </button>
         }
       </div>
       <div class="hero-actions">

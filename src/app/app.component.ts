@@ -64,7 +64,7 @@ type SiteContent = {
   language: { code: string; flag: string; label: string; switchTo: string };
   nav: Record<'about' | 'experience' | 'skills' | 'calculator' | 'team', string>;
   contact: Record<'button' | 'aria' | 'title' | 'email' | 'linkedin' | 'linkedinCta' | 'whatsapp', string>;
-  hero: { title: string; primaryCta: string; secondaryCta: string; support: string; supportCta: string; services: string[] };
+  hero: { title: string; primaryCta: string; secondaryCta: string; support: string; supportCta: string; services: { label: string; description: string }[] };
   about: { eyebrow: string; title: string; body: string };
   experience: { eyebrow: string; title: string; skillsLabel: string; resultsLabel: string; items?: Experience[]; translations?: Record<string, Partial<Experience>> };
   skills: Record<'eyebrow' | 'title' | 'rotateHint' | 'hoverHint' | 'technicalTitle' | 'technicalDescription' | 'deliveryTitle' | 'deliveryDescription' | 'upcomingTitle' | 'upcomingDescription' | 'upcomingStatus' | 'upcomingBody' | 'yearsUsed' | 'matchedExperience' | 'connectedTo' | 'coreCapability', string> & { items?: Skill[]; notes?: Record<string, string> };
@@ -109,7 +109,13 @@ const DEFAULT_CONTENT: SiteContent = {
     secondaryCta: 'Estimate a project',
     support: 'Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.',
     supportCta: 'How we work',
-    services: ['Frontend engineering', 'Backend systems', 'Data analysis', 'QA automation', 'Maintenance']
+    services: [
+      { label: 'Frontend engineering', description: 'The visible part of your product: pages, dashboards, forms and interfaces your clients use.' },
+      { label: 'Backend systems', description: 'The logic behind the product: APIs, authentication, data handling and integrations.' },
+      { label: 'Data analysis', description: 'Turning raw information into useful insights, reports and decisions for the business.' },
+      { label: 'QA automation', description: 'Automated checks that help catch bugs before your users or clients find them.' },
+      { label: 'Maintenance', description: 'Ongoing improvements, fixes and technical support after launch.' }
+    ]
   },
   about: {
     eyebrow: 'About',
@@ -253,6 +259,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   contactClosing = false;
   navOpen = false;
   currentLanguage: LanguageCode = 'en';
+  regionCode = 'US';
   content: SiteContent = DEFAULT_CONTENT;
 
   calculator = {
@@ -404,7 +411,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.loadLanguage(this.detectPreferredLanguage());
+    const visitorRegion = this.detectVisitorRegion();
+    this.regionCode = visitorRegion.regionCode;
+    await this.loadLanguage(visitorRegion.language);
 
     try {
       const response = await fetch('/data/portfolio.json');
@@ -474,13 +483,47 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private detectPreferredLanguage(): LanguageCode {
+    return this.detectVisitorRegion().language;
+  }
+
+  private detectVisitorRegion(): { language: LanguageCode; regionCode: string } {
     const localeSignals = [
       ...(navigator.languages ?? []),
-      navigator.language,
-      Intl.DateTimeFormat().resolvedOptions().timeZone
-    ].filter(Boolean).map((value) => value.toLowerCase());
-    const spanishSignals = ['es', 'america/caracas', 'america/bogota', 'america/mexico_city', 'america/argentina', 'america/lima', 'america/santiago', 'europe/madrid'];
-    return localeSignals.some((signal) => spanishSignals.some((spanishSignal) => signal.includes(spanishSignal))) ? 'es' : 'en';
+      navigator.language
+    ].filter(Boolean);
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const regionFromLocale = localeSignals
+      .map((locale) => locale.match(/[-_]([a-z]{2})\b/i)?.[1]?.toUpperCase())
+      .find(Boolean);
+    const regionFromTimezone = this.regionFromTimezone(timeZone);
+    const regionCode = regionFromTimezone ?? regionFromLocale ?? 'US';
+    const language = this.spanishRegions.has(regionCode) || localeSignals.some((locale) => locale.toLowerCase().startsWith('es')) ? 'es' : 'en';
+    return { language, regionCode };
+  }
+
+  private readonly spanishRegions = new Set(['AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'ES', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE']);
+
+  private regionFromTimezone(timeZone: string): string | null {
+    const timezoneRegions: Record<string, string> = {
+      'America/Argentina': 'AR',
+      'America/Bogota': 'CO',
+      'America/Caracas': 'VE',
+      'America/Guatemala': 'GT',
+      'America/Lima': 'PE',
+      'America/Mexico_City': 'MX',
+      'America/Montevideo': 'UY',
+      'America/Panama': 'PA',
+      'America/Puerto_Rico': 'PR',
+      'America/Santiago': 'CL',
+      'America/Asuncion': 'PY',
+      'America/El_Salvador': 'SV',
+      'America/La_Paz': 'BO',
+      'America/Managua': 'NI',
+      'America/Santo_Domingo': 'DO',
+      'America/Tegucigalpa': 'HN',
+      'Europe/Madrid': 'ES'
+    };
+    return Object.entries(timezoneRegions).find(([zone]) => timeZone.startsWith(zone))?.[1] ?? null;
   }
 
   private async loadLanguage(language: LanguageCode): Promise<void> {
