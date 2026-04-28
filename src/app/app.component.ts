@@ -50,12 +50,138 @@ type SkillDetails = {
 };
 
 type CalculatorTaskKey = 'frontend' | 'backend' | 'testing' | 'maintenance' | 'dataAnalysis' | 'automation' | 'etlScraping' | 'reporting';
+type TimelineUnit = 'days' | 'weeks' | 'months';
+type LanguageCode = 'en' | 'es';
 type CalculatorTask = {
   key: CalculatorTaskKey;
   label: string;
   description: string;
   category: string;
   isData?: boolean;
+};
+
+type SiteContent = {
+  language: { code: string; flag: string; label: string; switchTo: string };
+  nav: Record<'about' | 'experience' | 'skills' | 'calculator' | 'team', string>;
+  contact: Record<'button' | 'aria' | 'title' | 'email' | 'linkedin' | 'linkedinCta' | 'whatsapp', string>;
+  hero: { title: string; primaryCta: string; secondaryCta: string; support: string; supportCta: string; services: string[] };
+  about: { eyebrow: string; title: string; body: string };
+  experience: { eyebrow: string; title: string; skillsLabel: string; resultsLabel: string; items?: Experience[]; translations?: Record<string, Partial<Experience>> };
+  skills: Record<'eyebrow' | 'title' | 'rotateHint' | 'hoverHint' | 'technicalTitle' | 'technicalDescription' | 'deliveryTitle' | 'deliveryDescription' | 'upcomingTitle' | 'upcomingDescription' | 'upcomingStatus' | 'upcomingBody' | 'yearsUsed' | 'matchedExperience' | 'connectedTo' | 'coreCapability', string> & { items?: Skill[]; notes?: Record<string, string> };
+  calculator: {
+    eyebrow: string;
+    title: string;
+    budgetLabel: string;
+    budgetNote: string;
+    scopeTitle: string;
+    guidanceTitle: string;
+    guidanceBody: string;
+    guidanceCta: string;
+    timelineTitle: string;
+    decreaseTimeline: string;
+    increaseTimeline: string;
+    timelineAmount: string;
+    timelineUnit: string;
+    footnote: string;
+    summaryLabel: string;
+    availableBudget: string;
+    selectedWorkstreams: string;
+    requestedTimeline: string;
+    budgetFit: string;
+    startConversation: string;
+    units: Record<TimelineUnit, string>;
+    singularUnits: Record<TimelineUnit, string>;
+    status: Record<'comfortable' | 'focused' | 'adjust', string>;
+    recommendations: Record<'large' | 'medium' | 'small', string>;
+    budgetGap: Record<'above' | 'under', string>;
+    tasks: Record<CalculatorTaskKey, Omit<CalculatorTask, 'key' | 'isData'>>;
+  };
+  team: Record<'eyebrow' | 'title' | 'founderRole' | 'founderName' | 'founderBio' | 'engineerRole' | 'engineerName' | 'engineerBio', string>;
+};
+
+const DEFAULT_CONTENT: SiteContent = {
+  language: { code: 'EN', flag: 'US', label: 'English', switchTo: 'Switch to Spanish' },
+  nav: { about: 'About', experience: 'Experience', skills: 'Skill Maps', calculator: 'Calculator', team: 'Core Team' },
+  contact: { button: 'Contact', aria: 'Contact information', title: "Let's talk about your project", email: 'Email', linkedin: 'LinkedIn', linkedinCta: 'View profile', whatsapp: 'WhatsApp' },
+  hero: {
+    title: 'Software, SaaS platforms and data workflows built for teams that need momentum.',
+    primaryCta: 'View capabilities',
+    secondaryCta: 'Estimate a project',
+    support: 'Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.',
+    supportCta: 'How we work',
+    services: ['Frontend engineering', 'Backend systems', 'Data analysis', 'QA automation', 'Maintenance']
+  },
+  about: {
+    eyebrow: 'About',
+    title: 'Practical SaaS delivery for teams that need reliable software.',
+    body: 'Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.'
+  },
+  experience: { eyebrow: 'Client results', title: 'Delivery proof across product, data and software teams.', skillsLabel: 'Skills used', resultsLabel: 'Results and delivery', items: [] },
+  skills: {
+    eyebrow: 'Capabilities',
+    title: 'Connected skills maps',
+    rotateHint: 'Drag to rotate',
+    hoverHint: 'Hover skills for details',
+    technicalTitle: 'Technical network',
+    technicalDescription: 'Frontend, backend, platform and tooling capabilities.',
+    deliveryTitle: 'Delivery network',
+    deliveryDescription: 'Collaboration, ownership and cross-functional execution skills.',
+    upcomingTitle: 'Investing technologies',
+    upcomingDescription: 'Upcoming capability map for future R&D and product investments.',
+    upcomingStatus: 'Roadmap in progress',
+    upcomingBody: 'This map will activate in the next release.',
+    yearsUsed: 'years used',
+    matchedExperience: 'Matched experience',
+    connectedTo: 'Connected to',
+    coreCapability: 'Core capability'
+  },
+  calculator: {
+    eyebrow: 'Calculator',
+    title: 'Plan your product scope and delivery.',
+    budgetLabel: 'Client budget',
+    budgetNote: 'Set a working investment range to understand how much scope we can comfortably cover.',
+    scopeTitle: 'Which tasks are in scope?',
+    guidanceTitle: 'Not sure what to request yet?',
+    guidanceBody: 'Tell us what you want to improve, launch, automate or understand. Nev Research can help shape the scope, recommend the right technical path, prioritize the first version and guide your project from idea to working software.',
+    guidanceCta: 'Request project guidance',
+    timelineTitle: 'What timeline are we targeting?',
+    decreaseTimeline: 'Decrease timeline',
+    increaseTimeline: 'Increase timeline',
+    timelineAmount: 'Timeline amount',
+    timelineUnit: 'Timeline unit',
+    footnote: 'This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.',
+    summaryLabel: 'Estimated project range',
+    availableBudget: 'Available budget',
+    selectedWorkstreams: 'Selected workstreams',
+    requestedTimeline: 'Requested timeline',
+    budgetFit: 'Budget fit',
+    startConversation: 'Start the conversation',
+    units: { days: 'Days', weeks: 'Weeks', months: 'Months' },
+    singularUnits: { days: 'day', weeks: 'week', months: 'month' },
+    status: { comfortable: 'Comfortable budget range', focused: 'Feasible with focused scope', adjust: 'Scope or timeline should be adjusted' },
+    recommendations: { large: '10-14 weeks recommended', medium: '6-10 weeks recommended', small: '3-6 weeks recommended' },
+    budgetGap: { above: '{amount} available above estimate', under: '{amount} under the suggested range' },
+    tasks: {
+      frontend: { label: 'Frontend delivery', category: 'Product UI', description: 'Interfaces, landing flows, dashboards, responsive UI and Angular or React product screens.' },
+      backend: { label: 'Backend or APIs', category: 'Systems', description: 'Node.js services, REST endpoints, integrations, authentication-ready flows and data contracts.' },
+      testing: { label: 'Testing and QA', category: 'Quality', description: 'Validation plans, Playwright or Selenium coverage, regression checks and release confidence.' },
+      maintenance: { label: 'Maintenance support', category: 'Support', description: 'Bug fixes, small improvements, monitoring routines, documentation and product continuity.' },
+      dataAnalysis: { label: 'Data analysis', category: 'Data', description: 'SQL exploration, dataset cleanup, business questions, KPI review and practical insight delivery.' },
+      automation: { label: 'Automation', category: 'Data ops', description: 'Python workflows, repetitive task removal, operational scripts and browser automation support.' },
+      etlScraping: { label: 'ETL and web scraping', category: 'Pipelines', description: 'Extraction pipelines, transformations, structured datasets and reliable collection routines.' },
+      reporting: { label: 'Reporting workflows', category: 'Insights', description: 'Dashboards, spreadsheet models, quality checks and recurring delivery-ready summaries.' }
+    }
+  },
+  team: {
+    eyebrow: 'Core team',
+    title: 'People behind Nev Research delivery.',
+    founderRole: 'Founder',
+    founderName: 'Leonardo Diaz',
+    founderBio: 'Founder of Nev Research, focused on product architecture, frontend systems, client delivery, AI-assisted workflows, and long-term software quality.',
+    engineerRole: 'Data Engineer',
+    engineerName: 'Jorge Pestana',
+    engineerBio: 'Supports data analysis, Python automation, SQL workflows, QA validation, ETL routines, web scraping, and technical operations for SaaS clients.'
+  }
 };
 
 type GlobeKind = 'technical' | 'delivery';
@@ -115,6 +241,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   skills: Skill[] = [];
   technicalSkills: Skill[] = [];
   deliverySkills: Skill[] = [];
+  private baseExperiences: Experience[] = [];
+  private baseSkills: Skill[] = [];
 
   hoveredSkill: Skill | null = null;
   hoveredSkillDetails: SkillDetails | null = null;
@@ -124,6 +252,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   contactOpen = false;
   contactClosing = false;
   navOpen = false;
+  currentLanguage: LanguageCode = 'en';
+  content: SiteContent = DEFAULT_CONTENT;
 
   calculator = {
     budget: 4500,
@@ -136,19 +266,21 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     etlScraping: false,
     reporting: false,
     timelineValue: 6,
-    timelineUnit: 'weeks'
+    timelineUnit: 'weeks' as TimelineUnit
   };
 
-  calculatorTasks: CalculatorTask[] = [
-    { key: 'frontend', label: 'Frontend delivery', category: 'Product UI', description: 'Interfaces, landing flows, dashboards, responsive UI and Angular or React product screens.' },
-    { key: 'backend', label: 'Backend or APIs', category: 'Systems', description: 'Node.js services, REST endpoints, integrations, authentication-ready flows and data contracts.' },
-    { key: 'testing', label: 'Testing and QA', category: 'Quality', description: 'Validation plans, Playwright or Selenium coverage, regression checks and release confidence.' },
-    { key: 'maintenance', label: 'Maintenance support', category: 'Support', description: 'Bug fixes, small improvements, monitoring routines, documentation and product continuity.' },
-    { key: 'dataAnalysis', label: 'Data analysis', category: 'Data', description: 'SQL exploration, dataset cleanup, business questions, KPI review and practical insight delivery.', isData: true },
-    { key: 'automation', label: 'Automation', category: 'Data ops', description: 'Python workflows, repetitive task removal, operational scripts and browser automation support.', isData: true },
-    { key: 'etlScraping', label: 'ETL and web scraping', category: 'Pipelines', description: 'Extraction pipelines, transformations, structured datasets and reliable collection routines.', isData: true },
-    { key: 'reporting', label: 'Reporting workflows', category: 'Insights', description: 'Dashboards, spreadsheet models, quality checks and recurring delivery-ready summaries.', isData: true }
+  private readonly calculatorTaskConfig: Pick<CalculatorTask, 'key' | 'isData'>[] = [
+    { key: 'frontend' },
+    { key: 'backend' },
+    { key: 'testing' },
+    { key: 'maintenance' },
+    { key: 'dataAnalysis', isData: true },
+    { key: 'automation', isData: true },
+    { key: 'etlScraping', isData: true },
+    { key: 'reporting', isData: true }
   ];
+  readonly timelineUnits: TimelineUnit[] = ['days', 'weeks', 'months'];
+  calculatorTasks: CalculatorTask[] = this.createCalculatorTasks(DEFAULT_CONTENT);
 
   private contactCloseTimeout?: number;
   private globeRefs: Record<GlobeKind, GlobeRefs> = {
@@ -237,21 +369,22 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   get budgetStatus(): string {
     const difference = this.calculator.budget - this.estimatedProjectInvestment;
-    if (difference >= 2500) return 'Comfortable budget range';
-    if (difference >= 0) return 'Feasible with focused scope';
-    return 'Scope or timeline should be adjusted';
+    if (difference >= 2500) return this.content.calculator.status.comfortable;
+    if (difference >= 0) return this.content.calculator.status.focused;
+    return this.content.calculator.status.adjust;
   }
 
   get suggestedTimeline(): string {
-    if (this.selectedTaskCount >= 4) return '10-14 weeks recommended';
-    if (this.selectedTaskCount === 3) return '6-10 weeks recommended';
-    return '3-6 weeks recommended';
+    if (this.selectedTaskCount >= 4) return this.content.calculator.recommendations.large;
+    if (this.selectedTaskCount === 3) return this.content.calculator.recommendations.medium;
+    return this.content.calculator.recommendations.small;
   }
 
   get budgetGap(): string {
     const delta = this.calculator.budget - this.estimatedProjectInvestment;
-    const absolute = Math.abs(delta).toLocaleString();
-    return delta >= 0 ? `$${absolute} available above estimate` : `$${absolute} under the suggested range`;
+    const amount = `$${Math.abs(delta).toLocaleString()}`;
+    const template = delta >= 0 ? this.content.calculator.budgetGap.above : this.content.calculator.budgetGap.under;
+    return template.replace('{amount}', amount);
   }
 
   get formattedBudget(): string {
@@ -259,7 +392,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get formattedTimeline(): string {
-    const unit = this.calculator.timelineValue === 1 ? this.calculator.timelineUnit.slice(0, -1) : this.calculator.timelineUnit;
+    const unit = this.calculator.timelineValue === 1 ? this.content.calculator.singularUnits[this.calculator.timelineUnit] : this.content.calculator.units[this.calculator.timelineUnit].toLowerCase();
     return `${this.calculator.timelineValue} ${unit}`;
   }
 
@@ -271,16 +404,20 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
+    await this.loadLanguage(this.detectPreferredLanguage());
+
     try {
       const response = await fetch('/data/portfolio.json');
       const data = await response.json() as PortfolioData;
       this.profile = data.profile;
       this.contact = data.contact;
-      this.experiences = data.experiences;
-      this.skills = data.skills;
+      this.baseExperiences = data.experiences;
+      this.baseSkills = data.skills;
+      this.applyTranslatedData();
     } catch {
-      this.experiences = this.fallbackExperiences();
-      this.skills = this.fallbackSkills();
+      this.baseExperiences = this.fallbackExperiences();
+      this.baseSkills = this.fallbackSkills();
+      this.applyTranslatedData();
     }
 
     this.splitSkillGroups();
@@ -327,9 +464,70 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.navOpen = false;
   }
 
+  async switchLanguage(): Promise<void> {
+    await this.loadLanguage(this.currentLanguage === 'en' ? 'es' : 'en');
+  }
+
   adjustTimeline(delta: number): void {
     const nextValue = this.calculator.timelineValue + delta;
     this.calculator.timelineValue = Math.min(Math.max(nextValue, 1), 24);
+  }
+
+  private detectPreferredLanguage(): LanguageCode {
+    const localeSignals = [
+      ...(navigator.languages ?? []),
+      navigator.language,
+      Intl.DateTimeFormat().resolvedOptions().timeZone
+    ].filter(Boolean).map((value) => value.toLowerCase());
+    const spanishSignals = ['es', 'america/caracas', 'america/bogota', 'america/mexico_city', 'america/argentina', 'america/lima', 'america/santiago', 'europe/madrid'];
+    return localeSignals.some((signal) => spanishSignals.some((spanishSignal) => signal.includes(spanishSignal))) ? 'es' : 'en';
+  }
+
+  private async loadLanguage(language: LanguageCode): Promise<void> {
+    try {
+      const response = await fetch(`/i18n/${language}.json`);
+      if (!response.ok) throw new Error(`Missing language file: ${language}`);
+      this.content = await response.json() as SiteContent;
+      this.currentLanguage = language;
+    } catch {
+      this.content = DEFAULT_CONTENT;
+      this.currentLanguage = 'en';
+    }
+    this.applyTranslatedData();
+    this.calculatorTasks = this.createCalculatorTasks(this.content);
+    this.splitSkillGroups();
+    this.buildGlobe('technical');
+    this.buildGlobe('delivery');
+  }
+
+  private applyTranslatedData(): void {
+    const experienceTranslations = this.content.experience.translations ?? {};
+    const skillNotes = this.content.skills.notes ?? {};
+
+    this.experiences = this.content.experience.items?.length
+      ? this.content.experience.items
+      : this.baseExperiences.map((experience) => ({
+        ...experience,
+        ...(experienceTranslations[this.experienceTranslationKey(experience)] ?? experienceTranslations[experience.company] ?? {})
+      }));
+
+    this.skills = this.content.skills.items?.length
+      ? this.content.skills.items
+      : this.baseSkills.map((skill) => ({
+        ...skill,
+        note: skillNotes[skill.name] ?? skill.note
+      }));
+  }
+
+  private experienceTranslationKey(experience: Experience): string {
+    return `${experience.company}|${experience.role}`;
+  }
+
+  private createCalculatorTasks(content: SiteContent): CalculatorTask[] {
+    return this.calculatorTaskConfig.map((task) => ({
+      ...task,
+      ...content.calculator.tasks[task.key]
+    }));
   }
 
   private splitSkillGroups(): void {

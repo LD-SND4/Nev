@@ -1,0 +1,165 @@
+{
+  "language": {
+    "code": "EN",
+    "flag": "US",
+    "label": "English",
+    "switchTo": "Switch to Spanish"
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skill Maps",
+    "calculator": "Calculator",
+    "team": "Core Team"
+  },
+  "contact": {
+    "button": "Contact",
+    "aria": "Contact information",
+    "title": "Let's talk about your project",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "linkedinCta": "View profile",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "title": "Software, SaaS platforms and data workflows built for teams that need momentum.",
+    "primaryCta": "View capabilities",
+    "secondaryCta": "Estimate a project",
+    "support": "Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.",
+    "supportCta": "How we work",
+    "services": [
+      "Frontend engineering",
+      "Backend systems",
+      "Data analysis",
+      "QA automation",
+      "Maintenance"
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Practical SaaS delivery for teams that need reliable software.",
+    "body": "Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch."
+  },
+  "experience": {
+    "eyebrow": "Client results",
+    "title": "Delivery proof across product, data and software teams.",
+    "skillsLabel": "Skills used",
+    "resultsLabel": "Results and delivery"
+  },
+  "skills": {
+    "eyebrow": "Capabilities",
+    "title": "Connected skills maps",
+    "rotateHint": "Drag to rotate",
+    "hoverHint": "Hover skills for details",
+    "technicalTitle": "Technical network",
+    "technicalDescription": "Frontend, backend, platform and tooling capabilities.",
+    "deliveryTitle": "Delivery network",
+    "deliveryDescription": "Collaboration, ownership and cross-functional execution skills.",
+    "upcomingTitle": "Investing technologies",
+    "upcomingDescription": "Upcoming capability map for future R&D and product investments.",
+    "upcomingStatus": "Roadmap in progress",
+    "upcomingBody": "This map will activate in the next release.",
+    "yearsUsed": "years used",
+    "matchedExperience": "Matched experience",
+    "connectedTo": "Connected to",
+    "coreCapability": "Core capability"
+  },
+  "calculator": {
+    "eyebrow": "Calculator",
+    "title": "Plan your product scope and delivery.",
+    "budgetLabel": "Client budget",
+    "budgetNote": "Set a working investment range to understand how much scope we can comfortably cover.",
+    "scopeTitle": "Which tasks are in scope?",
+    "guidanceTitle": "Not sure what to request yet?",
+    "guidanceBody": "Tell us what you want to improve, launch, automate or understand. Nev Research can help shape the scope, recommend the right technical path, prioritize the first version and guide your project from idea to working software.",
+    "guidanceCta": "Request project guidance",
+    "timelineTitle": "What timeline are we targeting?",
+    "decreaseTimeline": "Decrease timeline",
+    "increaseTimeline": "Increase timeline",
+    "timelineAmount": "Timeline amount",
+    "timelineUnit": "Timeline unit",
+    "footnote": "This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.",
+    "summaryLabel": "Estimated project range",
+    "availableBudget": "Available budget",
+    "selectedWorkstreams": "Selected workstreams",
+    "requestedTimeline": "Requested timeline",
+    "budgetFit": "Budget fit",
+    "startConversation": "Start the conversation",
+    "units": {
+      "days": "Days",
+      "weeks": "Weeks",
+      "months": "Months"
+    },
+    "singularUnits": {
+      "days": "day",
+      "weeks": "week",
+      "months": "month"
+    },
+    "status": {
+      "comfortable": "Comfortable budget range",
+      "focused": "Feasible with focused scope",
+      "adjust": "Scope or timeline should be adjusted"
+    },
+    "recommendations": {
+      "large": "10-14 weeks recommended",
+      "medium": "6-10 weeks recommended",
+      "small": "3-6 weeks recommended"
+    },
+    "budgetGap": {
+      "above": "{amount} available above estimate",
+      "under": "{amount} under the suggested range"
+    },
+    "tasks": {
+      "frontend": {
+        "label": "Frontend delivery",
+        "category": "Product UI",
+        "description": "Interfaces, landing flows, dashboards, responsive UI and Angular or React product screens."
+      },
+      "backend": {
+        "label": "Backend or APIs",
+        "category": "Systems",
+        "description": "Node.js services, REST endpoints, integrations, authentication-ready flows and data contracts."
+      },
+      "testing": {
+        "label": "Testing and QA",
+        "category": "Quality",
+        "description": "Validation plans, Playwright or Selenium coverage, regression checks and release confidence."
+      },
+      "maintenance": {
+        "label": "Maintenance support",
+        "category": "Support",
+        "description": "Bug fixes, small improvements, monitoring routines, documentation and product continuity."
+      },
+      "dataAnalysis": {
+        "label": "Data analysis",
+        "category": "Data",
+        "description": "SQL exploration, dataset cleanup, business questions, KPI review and practical insight delivery."
+      },
+      "automation": {
+        "label": "Automation",
+        "category": "Data ops",
+        "description": "Python workflows, repetitive task removal, operational scripts and browser automation support."
+      },
+      "etlScraping": {
+        "label": "ETL and web scraping",
+        "category": "Pipelines",
+        "description": "Extraction pipelines, transformations, structured datasets and reliable collection routines."
+      },
+      "reporting": {
+        "label": "Reporting workflows",
+        "category": "Insights",
+        "description": "Dashboards, spreadsheet models, quality checks and recurring delivery-ready summaries."
+      }
+    }
+  },
+  "team": {
+    "eyebrow": "Core team",
+    "title": "People behind Nev Research delivery.",
+    "founderRole": "Founder",
+    "founderName": "Leonardo Diaz",
+    "founderBio": "Founder of Nev Research, focused on product architecture, frontend systems, client delivery, AI-assisted workflows, and long-term software quality.",
+    "engineerRole": "Data Engineer",
+    "engineerName": "Jorge Pestana",
+    "engineerBio": "Supports data analysis, Python automation, SQL workflows, QA validation, ETL routines, web scraping, and technical operations for SaaS clients."
+  }
+}

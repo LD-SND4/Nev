@@ -126,10 +126,17 @@
   }
 }
 
+.header-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .contact-menu {
   position: relative;
   display: flex;
-  justify-content: flex-end;
 }
 
 button,
@@ -140,6 +147,7 @@ a {
 }
 
 .contact-button,
+.language-toggle,
 .primary-link,
 .secondary-link {
   cursor: pointer;
@@ -147,6 +155,7 @@ a {
 }
 
 .contact-button,
+.language-toggle,
 .primary-link {
   position: relative;
   overflow: hidden;
@@ -165,6 +174,7 @@ a {
 }
 
 .contact-button::before,
+.language-toggle::before,
 .primary-link::before {
   content: "";
   position: absolute;
@@ -177,6 +187,8 @@ a {
 
 .contact-button:hover,
 .contact-button:focus-visible,
+.language-toggle:hover,
+.language-toggle:focus-visible,
 .primary-link:hover,
 .primary-link:focus-visible {
   border-color: rgba(72, 245, 255, 0.58);
@@ -186,10 +198,35 @@ a {
 
 .contact-button:hover::before,
 .contact-button:focus-visible::before,
+.language-toggle:hover::before,
+.language-toggle:focus-visible::before,
 .primary-link:hover::before,
 .primary-link:focus-visible::before {
   opacity: 1;
   animation: buttonSweep 720ms ease forwards;
+}
+
+.language-toggle {
+  gap: 8px;
+  min-width: 78px;
+  padding-inline: 12px;
+  background: rgba(132, 255, 176, 0.07);
+  border-color: rgba(132, 255, 176, 0.24);
+  color: #84ffb0;
+}
+
+.language-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 20px;
+  border: 1px solid rgba(132, 255, 176, 0.26);
+  border-radius: 4px;
+  background: rgba(5, 10, 19, 0.74);
+  color: #dce7f7;
+  font-size: 0.62rem;
+  line-height: 1;
 }
 
 .secondary-link {

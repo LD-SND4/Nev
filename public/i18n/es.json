@@ -1,0 +1,350 @@
+{
+  "language": {
+    "code": "ES",
+    "flag": "VE",
+    "label": "Español",
+    "switchTo": "Cambiar a inglés"
+  },
+  "nav": {
+    "about": "Nosotros",
+    "experience": "Resultados",
+    "skills": "Mapas",
+    "calculator": "Calculadora",
+    "team": "Equipo"
+  },
+  "contact": {
+    "button": "Contacto",
+    "aria": "Información de contacto",
+    "title": "Hablemos de tu proyecto",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "linkedinCta": "Ver perfil",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "title": "Software, plataformas SaaS y flujos de datos creados para equipos que necesitan avanzar.",
+    "primaryCta": "Ver capacidades",
+    "secondaryCta": "Estimar proyecto",
+    "support": "Nev Research diseña, construye y da soporte a productos digitales prácticos para fundadores, agencias y equipos operativos.",
+    "supportCta": "Cómo trabajamos",
+    "services": [
+      "Desarrollo frontend",
+      "Sistemas backend",
+      "Análisis de datos",
+      "Automatización QA",
+      "Mantenimiento"
+    ]
+  },
+  "about": {
+    "eyebrow": "Nosotros",
+    "title": "Entrega SaaS práctica para equipos que necesitan software confiable.",
+    "body": "Nev Research acompaña a clientes en el diseño, desarrollo y mantenimiento de software que sostiene operaciones reales: interfaces de producto, flujos backend, análisis de datos, automatización QA, reportes y mantenimiento a largo plazo. Trabajamos con alcance claro, entrega constante y sistemas que siguen siendo entendibles después del lanzamiento."
+  },
+  "experience": {
+    "eyebrow": "Resultados",
+    "title": "Prueba de entrega en equipos de producto, datos y software.",
+    "skillsLabel": "Tecnologías usadas",
+    "resultsLabel": "Resultados y entrega",
+    "translations": {
+      "Innovid|Frontend Developer": {
+        "role": "Desarrollador Frontend",
+        "location": "Remoto - Venezuela",
+        "period": "Jun 2025 - Feb 2026",
+        "highlights": [
+          "Construcción de formatos publicitarios HTML5 personalizados para campañas en producción, compatibles con múltiples navegadores y dispositivos.",
+          "Creación de patrones reutilizables en JavaScript que redujeron el tiempo de implementación de banners.",
+          "Mejora del rendimiento de animaciones y de la calidad de renderizado frontend para entregas de campaña.",
+          "Conexión de flujos de renderizado frontend con APIs backend y pasos automatizados de procesamiento de assets."
+        ]
+      },
+      "Independent|Freelance Frontend Development": {
+        "role": "Desarrollo Frontend Freelance",
+        "location": "Remoto",
+        "period": "Ene 2018 - Jun 2025",
+        "highlights": [
+          "Entrega de soluciones frontend para distintas necesidades de clientes, desde sitios web hasta interfaces digitales inmersivas.",
+          "Traducción de visiones de cliente en experiencias de usuario tangibles con foco en rendimiento y usabilidad.",
+          "Trabajo durante todo el ciclo de desarrollo, desde planificación y arquitectura hasta lanzamiento e iteración.",
+          "Expansión hacia flujos asistidos por IA y herramientas frontend modernas manteniendo entregas constantes a clientes."
+        ]
+      },
+      "GlobalLogic|FE Developer UI/UX": {
+        "role": "Desarrollador FE UI/UX",
+        "location": "Buenos Aires, Argentina",
+        "period": "Jul 2023 - Ago 2024",
+        "highlights": [
+          "Implementación de trabajo frontend/UI para features orientadas a producto dentro de un entorno de entrega cross-funcional.",
+          "Soporte a experiencias limpias para usuarios con énfasis en detalle y mantenibilidad.",
+          "Colaboración con equipos distribuidos y prácticas ágiles en proyectos para clientes."
+        ]
+      },
+      "Altimetrik|Frontend Web Developer": {
+        "role": "Desarrollador Web Frontend",
+        "location": "Argentina",
+        "period": "Jun 2021 - Nov 2022",
+        "highlights": [
+          "Colaboración cercana con equipos de diseño y desarrollo dentro de un entorno de producto dinámico.",
+          "Contribución en rediseños y refinamientos, incluyendo implementación de homepage y páginas estáticas.",
+          "Resolución de debugging y mejoras frontend como parte de un esfuerzo más amplio de rebranding."
+        ]
+      },
+      "Inclusion The Cloud Company|Frontend Developer": {
+        "role": "Desarrollador Frontend",
+        "location": "Argentina",
+        "period": "Feb 2020 - Jul 2021",
+        "highlights": [
+          "Responsable de tareas de implementación frontend enfocadas en ensamblaje de componentes y pulido de interfaces.",
+          "Contribución directa a mejores resultados de UI y UX en interfaces de producto.",
+          "Apoyo en la estructuración del trabajo frontend para entregas consistentes hacia usuarios."
+        ]
+      },
+      "MRM/McCann|Frontend Developer": {
+        "role": "Desarrollador Frontend",
+        "location": "Buenos Aires, Argentina",
+        "period": "Jun 2019 - Feb 2020",
+        "highlights": [
+          "Contribución en desarrollo frontend dentro de un entorno colaborativo de agencia.",
+          "Soporte a entregas de productos y experiencias digitales orientadas a marketing."
+        ]
+      },
+      "Proyecto Winxer|Winxer Web Development Teacher - Via Online": {
+        "role": "Profesor de Desarrollo Web - Online",
+        "location": "Perú",
+        "period": "Abr 2018 - Feb 2020",
+        "highlights": [
+          "Creación de material educativo en video y guía práctica para Bootstrap, HTML, CSS y JavaScript.",
+          "Acompañamiento a estudiantes en temas prácticos de desarrollo web mediante formación online."
+        ]
+      },
+      "6C Marketing|Frontend Developer": {
+        "role": "Desarrollador Frontend",
+        "location": "Argentina",
+        "period": "Feb 2019 - Jun 2019",
+        "highlights": [
+          "Trabajo como desarrollador web orientado al detalle después de graduarse en Ciencias de la Computación.",
+          "Entrega de trabajo frontend usando un stack amplio que incluyó HTML, CSS, Node.js, Bootstrap y Python."
+        ]
+      },
+      "Nybble Group|Uipath Trainee Developer": {
+        "role": "Desarrollador Trainee Uipath",
+        "location": "Argentina",
+        "period": "Dic 2018 - Ene 2019",
+        "highlights": [
+          "Inicio en un rol trainee de desarrollo mientras fortalecía habilidades prácticas de entrega de software.",
+          "Construcción de experiencia profesional temprana en entornos de equipo estructurados."
+        ]
+      },
+      "Universidad Nueva Esparta|Assistant IT & Web Programmer": {
+        "role": "Asistente IT y Programador Web",
+        "location": "Caracas, Distrito Federal, Venezuela",
+        "period": "Sep 2017 - Ago 2018",
+        "highlights": [
+          "Soporte en modificaciones de sitios web y creación de páginas.",
+          "Instalación, configuración y actualización de hardware y software.",
+          "Mantenimiento de equipos de servicio y generación de diagnósticos e informes de reparación."
+        ]
+      },
+      "Universidad Nueva Esparta|IT Projects Assistant - Programmer Junior": {
+        "role": "Asistente de Proyectos IT - Programador Junior",
+        "location": "Caracas, Distrito Federal, Venezuela",
+        "period": "May 2016 - Feb 2018",
+        "highlights": [
+          "Contribución en actividades de programación junior y soporte a proyectos IT.",
+          "Construcción de experiencia temprana en trabajo web y operaciones técnicas."
+        ]
+      },
+      "Strut Corp|Data & Math Specialist": {
+        "role": "Especialista en Datos y Matemáticas",
+        "location": "Utah, Estados Unidos - Remoto",
+        "period": "May 2025 - Actualidad",
+        "highlights": [
+          "Construcción de flujos de extracción de datos y automatización para analítica y monitoreo de negocio.",
+          "Uso de SQL y pipelines de scraping para limpiar y estructurar datasets listos para decisión.",
+          "Colaboración remota en calidad de datos, confiabilidad de automatizaciones y flujos de reportes."
+        ]
+      },
+      "AnnexBox|Data Analyst": {
+        "role": "Analista de Datos",
+        "location": "Nueva York, Estados Unidos - Remoto",
+        "period": "Jul 2024 - Mar 2025",
+        "highlights": [
+          "Análisis de datasets operativos y web para producir insights prácticos de negocio.",
+          "Diseño de rutinas de scraping y ETL para consolidar datos desde múltiples fuentes.",
+          "Mejora de la calidad de reportes mediante transformaciones más limpias y flujos repetibles."
+        ]
+      },
+      "Universidad Nueva Esparta|Technical Assistant": {
+        "role": "Asistente Técnico",
+        "location": "Venezuela - Presencial",
+        "period": "Jun 2018 - Dic 2023",
+        "highlights": [
+          "Soporte técnico y asistencia práctica en operaciones internas.",
+          "Trabajo con equipos cross-funcionales para mantener servicios y sistemas funcionando correctamente.",
+          "Desarrollo de habilidades de comunicación y coordinación con usuarios técnicos y no técnicos."
+        ]
+      },
+      "Yore Oyster|Search Engine Optimization Copywriter": {
+        "role": "Copywriter SEO",
+        "location": "Canadá - Remoto",
+        "period": "Jun 2020 - Ene 2023",
+        "highlights": [
+          "Redacción de contenido optimizado para SEO en publicaciones de finanzas personales.",
+          "Uso de Sheets y Excel para construir rutinas de planificación de contenido y control de calidad.",
+          "Contribución a flujos de escritura escalables con decisiones de contenido apoyadas por datos."
+        ]
+      }
+    }
+  },
+  "skills": {
+    "eyebrow": "Capacidades",
+    "title": "Mapas de habilidades conectadas",
+    "rotateHint": "Arrastra para rotar",
+    "hoverHint": "Pasa el cursor para ver detalles",
+    "technicalTitle": "Red técnica",
+    "technicalDescription": "Capacidades frontend, backend, plataforma y herramientas.",
+    "deliveryTitle": "Red de entrega",
+    "deliveryDescription": "Colaboración, ownership y ejecución entre equipos.",
+    "upcomingTitle": "Tecnologías de inversión",
+    "upcomingDescription": "Mapa futuro para investigación, desarrollo e inversión en producto.",
+    "upcomingStatus": "Roadmap en progreso",
+    "upcomingBody": "Este mapa se activará en la próxima versión.",
+    "yearsUsed": "años de uso",
+    "matchedExperience": "Experiencia relacionada",
+    "connectedTo": "Conectado con",
+    "coreCapability": "Capacidad central",
+    "notes": {
+      "JavaScript": "Programación frontend central para sitios de clientes, aplicaciones, formatos publicitarios e interfaces modernas.",
+      "TypeScript": "Arquitectura tipada de aplicaciones para proyectos Angular y React en entornos de producción.",
+      "HTML5": "Estructura semántica para aplicaciones web, landing pages, contenido educativo y experiencias publicitarias HTML5.",
+      "CSS3": "Layouts responsivos, estilos de componentes, trabajo de animación y entrega frontend visualmente pulida.",
+      "SASS": "Sistemas de estilos mantenibles y flujos escalables para frontend.",
+      "Angular": "Trabajo productivo en Angular para productos enterprise, migraciones, features UX y componentes mantenibles.",
+      "React": "Desarrollo frontend de producto, implementación UI y trabajo moderno con componentes reutilizables.",
+      "Next.js": "Entrega de aplicaciones y sitios modernos basados en React, listos para producción.",
+      "Node.js": "Servicios backend, APIs con Express, pipelines de automatización y entrega full-stack práctica.",
+      "Express": "Rutas REST API y capas backend ligeras para soportar features frontend.",
+      "Python": "Automatización, scripting y soporte productivo para acelerar flujos de entrega.",
+      "REST APIs": "Integración frontend/backend, alineación de contratos y diseño de flujos de datos de aplicaciones.",
+      "Bootstrap": "Entrega rápida de UI responsiva y material de enseñanza para desarrollo frontend práctico.",
+      "Tailwind": "Estilos utility-first para iteración rápida y espaciado limpio de componentes.",
+      "Material UI": "Trabajo con librerías de componentes estructuradas en proyectos frontend modernos.",
+      "CI/CD": "Automatización de despliegues con pipelines prácticos que reducen fricción en releases.",
+      "GitHub Actions": "Checks automatizados y flujos de despliegue para proyectos de producción.",
+      "Vercel": "Despliegues frontend y hosting para ciclos de entrega rápidos.",
+      "AWS": "Exposición a cloud y despliegue junto con flujos DevOps más amplios.",
+      "Docker": "Uso fundacional de contenedores en flujos de desarrollo y entrega.",
+      "Responsive": "Interfaces diseñadas para funcionar limpiamente en móvil, tablet y desktop.",
+      "Client Communication": "Sesiones de discovery, traducción de requerimientos y actualizaciones claras para colaboración remota.",
+      "Ownership": "Comodidad para asumir features complejas de punta a punta en equipos remotos y cross-funcionales.",
+      "Collaboration": "Trabajo directo con UX, backend, producto y equipos distribuidos de entrega.",
+      "Continuous Learning": "Hábito fuerte de expandirse hacia nuevas capacidades frontend, IA y flujos de trabajo.",
+      "Gen AI": "Enfoque en integrar IA generativa y desarrollo asistido por LLM en flujos reales de producción.",
+      "Data Scientist": "Aplica pensamiento analítico y estadístico para convertir datos crudos en decisiones prácticas de producto.",
+      "QA Engineer": "Construye flujos de validación y controles de calidad para reducir defectos y aumentar confianza en la entrega.",
+      "SQL": "Crea consultas y transformaciones estructuradas para datasets operativos, analíticos y de reportes.",
+      "Selenium": "Usa automatización de navegador para validación repetitiva y flujos relacionados con scraping.",
+      "ETL": "Diseña rutinas de extracción, transformación y carga para normalizar y entregar datos de negocio más limpios.",
+      "Automation": "Automatiza tareas de datos y operaciones para mejorar velocidad, repetibilidad y confiabilidad.",
+      "Web Scraping": "Recolecta y estructura datos web mediante flujos de extracción escalables.",
+      "Playwright": "Usa automatización moderna de navegador para testing y recolección de datos."
+    }
+  },
+  "calculator": {
+    "eyebrow": "Calculadora",
+    "title": "Planifica el alcance y la entrega de tu producto.",
+    "budgetLabel": "Presupuesto del cliente",
+    "budgetNote": "Define un rango de inversión para entender cuánto alcance podemos cubrir cómodamente.",
+    "scopeTitle": "¿Qué tareas entran en el alcance?",
+    "guidanceTitle": "¿No sabes qué solicitar todavía?",
+    "guidanceBody": "Cuéntanos qué quieres mejorar, lanzar, automatizar o entender. Nev Research puede ayudarte a definir el alcance, recomendar el camino técnico correcto, priorizar la primera versión y guiar tu proyecto desde la idea hasta un software funcional.",
+    "guidanceCta": "Solicitar guía del proyecto",
+    "timelineTitle": "¿Qué línea de tiempo buscamos?",
+    "decreaseTimeline": "Reducir tiempo",
+    "increaseTimeline": "Aumentar tiempo",
+    "timelineAmount": "Cantidad de tiempo",
+    "timelineUnit": "Unidad de tiempo",
+    "footnote": "Esta estimación es orientativa y útil para conversar sobre el alcance. El precio final depende de la profundidad del producto, integraciones, revisiones y expectativas de entrega.",
+    "summaryLabel": "Rango estimado del proyecto",
+    "availableBudget": "Presupuesto disponible",
+    "selectedWorkstreams": "Líneas de trabajo",
+    "requestedTimeline": "Tiempo solicitado",
+    "budgetFit": "Ajuste del presupuesto",
+    "startConversation": "Iniciar conversación",
+    "units": {
+      "days": "Días",
+      "weeks": "Semanas",
+      "months": "Meses"
+    },
+    "singularUnits": {
+      "days": "día",
+      "weeks": "semana",
+      "months": "mes"
+    },
+    "status": {
+      "comfortable": "Rango de presupuesto cómodo",
+      "focused": "Viable con alcance enfocado",
+      "adjust": "Conviene ajustar alcance o tiempo"
+    },
+    "recommendations": {
+      "large": "Se recomiendan 10-14 semanas",
+      "medium": "Se recomiendan 6-10 semanas",
+      "small": "Se recomiendan 3-6 semanas"
+    },
+    "budgetGap": {
+      "above": "{amount} disponibles sobre la estimación",
+      "under": "{amount} por debajo del rango sugerido"
+    },
+    "tasks": {
+      "frontend": {
+        "label": "Entrega frontend",
+        "category": "UI de producto",
+        "description": "Interfaces, landing flows, dashboards, UI responsive y pantallas de producto en Angular o React."
+      },
+      "backend": {
+        "label": "Backend o APIs",
+        "category": "Sistemas",
+        "description": "Servicios Node.js, endpoints REST, integraciones, flujos listos para autenticación y contratos de datos."
+      },
+      "testing": {
+        "label": "Testing y QA",
+        "category": "Calidad",
+        "description": "Planes de validación, cobertura con Playwright o Selenium, regresiones y confianza para releases."
+      },
+      "maintenance": {
+        "label": "Soporte y mantenimiento",
+        "category": "Soporte",
+        "description": "Corrección de bugs, mejoras pequeñas, monitoreo, documentación y continuidad del producto."
+      },
+      "dataAnalysis": {
+        "label": "Análisis de datos",
+        "category": "Datos",
+        "description": "Exploración SQL, limpieza de datasets, preguntas de negocio, revisión de KPIs e insights prácticos."
+      },
+      "automation": {
+        "label": "Automatización",
+        "category": "Data ops",
+        "description": "Flujos en Python, eliminación de tareas repetitivas, scripts operativos y soporte con automatización web."
+      },
+      "etlScraping": {
+        "label": "ETL y web scraping",
+        "category": "Pipelines",
+        "description": "Extracción, transformación, datasets estructurados y rutinas de recolección confiables."
+      },
+      "reporting": {
+        "label": "Flujos de reportes",
+        "category": "Insights",
+        "description": "Dashboards, modelos en hojas de cálculo, controles de calidad y resúmenes recurrentes listos para entrega."
+      }
+    }
+  },
+  "team": {
+    "eyebrow": "Equipo central",
+    "title": "Personas detrás de la entrega de Nev Research.",
+    "founderRole": "Fundador",
+    "founderName": "Leonardo Diaz",
+    "founderBio": "Fundador de Nev Research, enfocado en arquitectura de producto, sistemas frontend, entrega a clientes, flujos asistidos por IA y calidad de software a largo plazo.",
+    "engineerRole": "Ingeniero de Datos",
+    "engineerName": "Jorge Pestana",
+    "engineerBio": "Soporte en análisis de datos, automatización con Python, flujos SQL, validación QA, rutinas ETL, web scraping y operaciones técnicas para clientes SaaS."
+  }
+}

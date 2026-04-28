@@ -8,65 +8,70 @@
   </button>
 
   <nav class="main-nav" [class.is-open]="navOpen" aria-label="Main navigation">
-    <a href="#about" (click)="closeNav()">About</a>
-    <a href="#experience" (click)="closeNav()">Experience</a>
-    <a href="#skills" (click)="closeNav()">Skill Maps</a>
-    <a href="#calculator" (click)="closeNav()">Calculator</a>
-    <a href="#team" (click)="closeNav()">Core Team</a>
+    <a href="#about" (click)="closeNav()">{{ content.nav.about }}</a>
+    <a href="#experience" (click)="closeNav()">{{ content.nav.experience }}</a>
+    <a href="#skills" (click)="closeNav()">{{ content.nav.skills }}</a>
+    <a href="#calculator" (click)="closeNav()">{{ content.nav.calculator }}</a>
+    <a href="#team" (click)="closeNav()">{{ content.nav.team }}</a>
   </nav>
 
-  <div class="contact-menu">
-    <button class="contact-button" type="button" (click)="toggleContact()" [attr.aria-expanded]="contactOpen">
-      Contact
-    </button>
+  <div class="header-actions">
+    <div class="contact-menu">
+      <button class="contact-button" type="button" (click)="toggleContact()" [attr.aria-expanded]="contactOpen">
+        {{ content.contact.button }}
+      </button>
 
-    @if (contactOpen) {
-      <aside class="contact-popover" [class.is-closing]="contactClosing" aria-label="Contact information">
-        <p class="contact-popover-title">Let&apos;s talk about your project</p>
-        <div class="contact-actions">
-          <a class="contact-card" [href]="'mailto:' + contact.email">
-            <strong>Email</strong>
-            <span>{{ contact.email }}</span>
-          </a>
-          @if (contact.linkedin) {
-            <a class="contact-card" [href]="contact.linkedin" target="_blank" rel="noreferrer">
-              <strong>LinkedIn</strong>
-              <span>View profile</span>
+      @if (contactOpen) {
+        <aside class="contact-popover" [class.is-closing]="contactClosing" [attr.aria-label]="content.contact.aria">
+          <p class="contact-popover-title">{{ content.contact.title }}</p>
+          <div class="contact-actions">
+            <a class="contact-card" [href]="'mailto:' + contact.email">
+              <strong>{{ content.contact.email }}</strong>
+              <span>{{ contact.email }}</span>
             </a>
-          }
-          @if (whatsappLink && contact.phone) {
-            <a class="contact-card" [href]="whatsappLink" target="_blank" rel="noreferrer">
-              <strong>WhatsApp</strong>
-              <span>{{ contact.phone }}</span>
-            </a>
-          }
-        </div>
-      </aside>
-    }
+            @if (contact.linkedin) {
+              <a class="contact-card" [href]="contact.linkedin" target="_blank" rel="noreferrer">
+                <strong>{{ content.contact.linkedin }}</strong>
+                <span>{{ content.contact.linkedinCta }}</span>
+              </a>
+            }
+            @if (whatsappLink && contact.phone) {
+              <a class="contact-card" [href]="whatsappLink" target="_blank" rel="noreferrer">
+                <strong>{{ content.contact.whatsapp }}</strong>
+                <span>{{ contact.phone }}</span>
+              </a>
+            }
+          </div>
+        </aside>
+      }
+    </div>
+
+    <button class="language-toggle" type="button" (click)="switchLanguage()" [attr.aria-label]="content.language.switchTo">
+      <span class="language-flag">{{ content.language.flag }}</span>
+      <span>{{ content.language.code }}</span>
+    </button>
   </div>
 </header>
 
 <main>
   <section class="hero section-shell" id="intro">
     <div class="hero-copy">
-      <h1>Software, SaaS platforms and data workflows built for teams that need momentum.</h1>
+      <h1>{{ content.hero.title }}</h1>
       <div class="hero-actions">
-        <a class="primary-link" href="#experience">View capabilities</a>
-        <a class="secondary-link" href="#calculator">Estimate a project</a>
+        <a class="primary-link" href="#experience">{{ content.hero.primaryCta }}</a>
+        <a class="secondary-link" href="#calculator">{{ content.hero.secondaryCta }}</a>
       </div>
     </div>
 
     <aside class="hero-support" aria-label="Nev Research service focus">
-      <p>Nev Research designs, builds and supports practical digital products for founders, agencies and operations teams.</p>
+      <p>{{ content.hero.support }}</p>
       <div class="hero-service-grid">
-        <span>Frontend engineering</span>
-        <span>Backend systems</span>
-        <span>Data analysis</span>
-        <span>QA automation</span>
-        <span>Maintenance</span>
+        @for (service of content.hero.services; track service) {
+          <span>{{ service }}</span>
+        }
       </div>
       <div class="hero-actions">
-        <a class="secondary-link" href="#about">How we work</a>
+        <a class="secondary-link" href="#about">{{ content.hero.supportCta }}</a>
       </div>
     </aside>
 
@@ -74,16 +79,16 @@
 
   <section class="about section-shell" id="about">
     <div>
-      <p class="eyebrow">About</p>
-      <h2>Practical SaaS delivery for teams that need reliable software.</h2>
+      <p class="eyebrow">{{ content.about.eyebrow }}</p>
+      <h2>{{ content.about.title }}</h2>
     </div>
-    <p>Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.</p>
+    <p>{{ content.about.body }}</p>
   </section>
 
   <section class="experience section-shell" id="experience">
     <div class="section-heading">
-      <p class="eyebrow">Client results</p>
-      <h2>Delivery proof across product, data and software teams.</h2>
+      <p class="eyebrow">{{ content.experience.eyebrow }}</p>
+      <h2>{{ content.experience.title }}</h2>
     </div>
 
     <div class="results-grid">
@@ -100,7 +105,7 @@
           </div>
 
           @if (item.technologies?.length) {
-            <div class="tech-list" aria-label="Skills used">
+            <div class="tech-list" [attr.aria-label]="content.experience.skillsLabel">
               @for (technology of item.technologies; track technology) {
                 <span>{{ technology }}</span>
               }
@@ -108,7 +113,7 @@
           }
 
           <div class="result-details">
-            <strong>Results and delivery</strong>
+            <strong>{{ content.experience.resultsLabel }}</strong>
             <ul>
               @for (point of item.highlights; track point) {
                 <li>{{ point }}</li>
@@ -122,12 +127,12 @@
 
   <section class="skills section-shell" id="skills">
     <div class="section-heading">
-      <p class="eyebrow">Capabilities</p>
+      <p class="eyebrow">{{ content.skills.eyebrow }}</p>
       <div class="skills-heading-row">
-        <h2>Connected skills maps</h2>
+        <h2>{{ content.skills.title }}</h2>
         <div class="skills-global-hint">
-          <span>Drag to rotate</span>
-          <span>Hover skills for details</span>
+          <span>{{ content.skills.rotateHint }}</span>
+          <span>{{ content.skills.hoverHint }}</span>
         </div>
       </div>
     </div>
@@ -135,24 +140,24 @@
     <div class="triple-globes">
       <article class="globe-panel globe-panel-technical">
         <header>
-          <h3>Technical network</h3>
-          <p>Frontend, backend, platform and tooling capabilities.</p>
+          <h3>{{ content.skills.technicalTitle }}</h3>
+          <p>{{ content.skills.technicalDescription }}</p>
         </header>
         <div class="skill-globe" #technicalGlobeFrame aria-label="Interactive technical skills network">
           <canvas #technicalGlobeCanvas class="skill-globe-canvas" data-testid="technical-skill-globe-canvas"></canvas>
           @if (hoveredGlobe === 'technical' && hoveredSkill && hoveredSkillDetails) {
             <aside class="skill-popover" [style]="skillPopoverStyle">
               <strong>{{ hoveredSkill.name }}</strong>
-              <span>{{ hoveredSkill.years }} years used</span>
+              <span>{{ hoveredSkill.years }} {{ content.skills.yearsUsed }}</span>
               <p>{{ hoveredSkill.note }}</p>
               <dl>
                 <div>
-                  <dt>Matched experience</dt>
+                  <dt>{{ content.skills.matchedExperience }}</dt>
                   <dd>{{ hoveredSkillDetails.projectCount }}</dd>
                 </div>
                 <div>
-                  <dt>Connected to</dt>
-                  <dd>{{ hoveredSkillDetails.related.join(', ') || 'Core capability' }}</dd>
+                  <dt>{{ content.skills.connectedTo }}</dt>
+                  <dd>{{ hoveredSkillDetails.related.join(', ') || content.skills.coreCapability }}</dd>
                 </div>
               </dl>
               @if (hoveredSkillDetails.projects.length) {
@@ -169,24 +174,24 @@
 
       <article class="globe-panel globe-panel-delivery">
         <header>
-          <h3>Delivery network</h3>
-          <p>Collaboration, ownership and cross-functional execution skills.</p>
+          <h3>{{ content.skills.deliveryTitle }}</h3>
+          <p>{{ content.skills.deliveryDescription }}</p>
         </header>
         <div class="skill-globe" #deliveryGlobeFrame aria-label="Interactive delivery skills network">
           <canvas #deliveryGlobeCanvas class="skill-globe-canvas" data-testid="delivery-skill-globe-canvas"></canvas>
           @if (hoveredGlobe === 'delivery' && hoveredSkill && hoveredSkillDetails) {
             <aside class="skill-popover" [style]="skillPopoverStyle">
               <strong>{{ hoveredSkill.name }}</strong>
-              <span>{{ hoveredSkill.years }} years used</span>
+              <span>{{ hoveredSkill.years }} {{ content.skills.yearsUsed }}</span>
               <p>{{ hoveredSkill.note }}</p>
               <dl>
                 <div>
-                  <dt>Matched experience</dt>
+                  <dt>{{ content.skills.matchedExperience }}</dt>
                   <dd>{{ hoveredSkillDetails.projectCount }}</dd>
                 </div>
                 <div>
-                  <dt>Connected to</dt>
-                  <dd>{{ hoveredSkillDetails.related.join(', ') || 'Core capability' }}</dd>
+                  <dt>{{ content.skills.connectedTo }}</dt>
+                  <dd>{{ hoveredSkillDetails.related.join(', ') || content.skills.coreCapability }}</dd>
                 </div>
               </dl>
               @if (hoveredSkillDetails.projects.length) {
@@ -203,14 +208,14 @@
 
       <article class="globe-panel globe-panel-upcoming">
         <header>
-          <h3>Investing technologies</h3>
-          <p>Upcoming capability map for future R&amp;D and product investments.</p>
+          <h3>{{ content.skills.upcomingTitle }}</h3>
+          <p>{{ content.skills.upcomingDescription }}</p>
         </header>
         <div class="skill-globe skill-globe-upcoming" aria-label="Upcoming investing technologies network">
           <div class="upcoming-orb" aria-hidden="true"></div>
           <div class="upcoming-overlay">
-            <strong>Roadmap in progress</strong>
-            <span>This map will activate in the next release.</span>
+            <strong>{{ content.skills.upcomingStatus }}</strong>
+            <span>{{ content.skills.upcomingBody }}</span>
           </div>
         </div>
       </article>
@@ -219,14 +224,14 @@
 
   <section class="calculator section-shell" id="calculator">
     <div class="section-heading">
-      <p class="eyebrow">Calculator</p>
-      <h2>Plan your product scope and delivery.</h2>
+      <p class="eyebrow">{{ content.calculator.eyebrow }}</p>
+      <h2>{{ content.calculator.title }}</h2>
     </div>
 
     <div class="calculator-shell">
       <div class="calculator-inputs">
         <label class="budget-field">
-          <span>Client budget</span>
+          <span>{{ content.calculator.budgetLabel }}</span>
           <div class="budget-input" [class]="'budget-tone-' + budgetTone" [style]="budgetSliderStyle">
             <strong>{{ formattedBudget }}</strong>
             <div class="budget-slider">
@@ -245,74 +250,74 @@
           </div>
         </label>
 
-        <p class="calculator-note">Set a working investment range to understand how much scope we can comfortably cover.</p>
+        <p class="calculator-note">{{ content.calculator.budgetNote }}</p>
 
         <div class="task-picker">
-          <h3>Which tasks are in scope?</h3>
+          <h3>{{ content.calculator.scopeTitle }}</h3>
           <div class="task-list">
             @for (task of calculatorTasks; track task.key) {
               <label class="task-card" [class.task-card-data]="task.isData" [class.is-selected]="calculator[task.key]">
                 <input type="checkbox" [(ngModel)]="calculator[task.key]" />
                 <span class="task-check" aria-hidden="true"></span>
                 <span class="task-content">
-                  <strong>{{ task.label }}</strong>
-                  <em>{{ task.category }}</em>
-                  <span>{{ task.description }}</span>
+                  <strong>{{ content.calculator.tasks[task.key].label }}</strong>
+                  <em>{{ content.calculator.tasks[task.key].category }}</em>
+                  <span>{{ content.calculator.tasks[task.key].description }}</span>
                 </span>
               </label>
             }
           </div>
           @if (!selectedTaskCount) {
             <aside class="scope-help-popout">
-              <strong>Not sure what to request yet?</strong>
-              <p>Tell us what you want to improve, launch, automate or understand. Nev Research can help shape the scope, recommend the right technical path, prioritize the first version and guide your project from idea to working software.</p>
-              <a [href]="'mailto:' + contact.email + '?subject=Project%20Guidance%20Request'">Request project guidance</a>
+              <strong>{{ content.calculator.guidanceTitle }}</strong>
+              <p>{{ content.calculator.guidanceBody }}</p>
+              <a [href]="'mailto:' + contact.email + '?subject=Project%20Guidance%20Request'">{{ content.calculator.guidanceCta }}</a>
             </aside>
           }
         </div>
 
         <div class="timeline-picker">
-          <h3>What timeline are we targeting?</h3>
+          <h3>{{ content.calculator.timelineTitle }}</h3>
           <div class="timeline-inputs">
             <div class="timeline-stepper">
-              <button type="button" (click)="adjustTimeline(-1)" aria-label="Decrease timeline">-</button>
-              <input type="number" min="1" max="24" [(ngModel)]="calculator.timelineValue" aria-label="Timeline amount" />
-              <button type="button" (click)="adjustTimeline(1)" aria-label="Increase timeline">+</button>
+              <button type="button" (click)="adjustTimeline(-1)" [attr.aria-label]="content.calculator.decreaseTimeline">-</button>
+              <input type="number" min="1" max="24" [(ngModel)]="calculator.timelineValue" [attr.aria-label]="content.calculator.timelineAmount" />
+              <button type="button" (click)="adjustTimeline(1)" [attr.aria-label]="content.calculator.increaseTimeline">+</button>
             </div>
-            <div class="timeline-units" role="group" aria-label="Timeline unit">
-              @for (unit of ['days', 'weeks', 'months']; track unit) {
+            <div class="timeline-units" role="group" [attr.aria-label]="content.calculator.timelineUnit">
+              @for (unit of timelineUnits; track unit) {
                 <button type="button" [class.is-selected]="calculator.timelineUnit === unit" (click)="calculator.timelineUnit = unit">
-                  {{ unit }}
+                  {{ content.calculator.units[unit] }}
                 </button>
               }
             </div>
           </div>
         </div>
 
-        <p class="calculator-footnote">This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.</p>
+        <p class="calculator-footnote">{{ content.calculator.footnote }}</p>
       </div>
 
       <aside class="calculator-summary">
-        <p class="summary-label">Estimated project range</p>
+        <p class="summary-label">{{ content.calculator.summaryLabel }}</p>
         <strong class="summary-total">{{ estimateRange }}</strong>
 
         <div class="summary-divider"></div>
 
         <dl class="summary-breakdown">
           <div>
-            <dt>Available budget</dt>
+            <dt>{{ content.calculator.availableBudget }}</dt>
             <dd>{{ formattedBudget }}</dd>
           </div>
           <div>
-            <dt>Selected workstreams</dt>
+            <dt>{{ content.calculator.selectedWorkstreams }}</dt>
             <dd>{{ selectedTaskCount }}</dd>
           </div>
           <div>
-            <dt>Requested timeline</dt>
+            <dt>{{ content.calculator.requestedTimeline }}</dt>
             <dd>{{ formattedTimeline }}</dd>
           </div>
           <div>
-            <dt>Budget fit</dt>
+            <dt>{{ content.calculator.budgetFit }}</dt>
             <dd>{{ budgetGap }}</dd>
           </div>
         </dl>
@@ -329,7 +334,7 @@
         </div>
 
         <a class="summary-action" [href]="'mailto:' + contact.email + '?subject=Project%20Estimate%20Request'">
-          Start the conversation
+          {{ content.calculator.startConversation }}
         </a>
       </aside>
     </div>
@@ -337,8 +342,8 @@
 
   <section class="team section-shell" id="team">
     <div class="section-heading">
-      <p class="eyebrow">Core team</p>
-      <h2>People behind Nev Research delivery.</h2>
+      <p class="eyebrow">{{ content.team.eyebrow }}</p>
+      <h2>{{ content.team.title }}</h2>
     </div>
 
     <div class="team-grid">
@@ -347,9 +352,9 @@
           <img src="content/founder/7bba4909-7c5f-453c-829b-4bb287222216.png" alt="Leonardo Diaz, Founder of Nev Research" />
         </figure>
         <div>
-          <p class="eyebrow">Founder</p>
-          <h3>Leonardo Diaz</h3>
-          <p>Founder of Nev Research, focused on product architecture, frontend systems, client delivery, AI-assisted workflows, and long-term software quality.</p>
+          <p class="eyebrow">{{ content.team.founderRole }}</p>
+          <h3>{{ content.team.founderName }}</h3>
+          <p>{{ content.team.founderBio }}</p>
         </div>
       </article>
 
@@ -358,9 +363,9 @@
           <img src="content/engineers/34362f85-3e52-440c-a32b-f83dd5f8a5fa.png" alt="Data engineer at Nev Research" />
         </figure>
         <div>
-          <p class="eyebrow">Data Engineer</p>
-          <h3>Jorge Pestana</h3>
-          <p>Supports data analysis, Python automation, SQL workflows, QA validation, ETL routines, web scraping, and technical operations for SaaS clients.</p>
+          <p class="eyebrow">{{ content.team.engineerRole }}</p>
+          <h3>{{ content.team.engineerName }}</h3>
+          <p>{{ content.team.engineerBio }}</p>
         </div>
       </article>
     </div>
