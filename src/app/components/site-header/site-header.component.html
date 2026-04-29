@@ -1,0 +1,69 @@
+<header class="site-header">
+  <a class="brand" href="#intro" aria-label="Go to Nev Research introduction">Nev Research</a>
+
+  <button class="nav-toggle" type="button" (click)="toggleNav.emit()" [attr.aria-expanded]="navOpen" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="main-nav" [class.is-open]="navOpen" aria-label="Main navigation">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-brand">Nev Research</span>
+      <button class="mobile-nav-close" type="button" (click)="closeNav.emit()" aria-label="Close navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <a href="#about" (click)="closeNav.emit()">{{ content.nav.about }}</a>
+    <a href="#experience" (click)="closeNav.emit()">{{ content.nav.experience }}</a>
+    <a href="#skills" (click)="closeNav.emit()">{{ content.nav.skills }}</a>
+    <a href="#calculator" (click)="closeNav.emit()">{{ content.nav.calculator }}</a>
+    <a href="#team" (click)="closeNav.emit()">{{ content.nav.team }}</a>
+
+    <div class="mobile-nav-actions">
+      <a class="contact-button" [href]="'mailto:' + contact.email" (click)="closeNav.emit()">{{ content.contact.button }}</a>
+      <button class="language-toggle" type="button" (click)="switchLanguage.emit()" [attr.aria-label]="content.language.switchTo">
+        <span class="language-flag">{{ regionCode }}</span>
+        <span>{{ content.language.code }}</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="header-actions">
+    <div class="contact-menu">
+      <button class="contact-button" type="button" (click)="toggleContact.emit()" [attr.aria-expanded]="contactOpen">
+        {{ content.contact.button }}
+      </button>
+
+      @if (contactOpen) {
+        <aside class="contact-popover" [class.is-closing]="contactClosing" [attr.aria-label]="content.contact.aria">
+          <p class="contact-popover-title">{{ content.contact.title }}</p>
+          <div class="contact-actions">
+            <a class="contact-card" [href]="'mailto:' + contact.email">
+              <strong>{{ content.contact.email }}</strong>
+              <span>{{ contact.email }}</span>
+            </a>
+            @if (contact.linkedin) {
+              <a class="contact-card" [href]="contact.linkedin" target="_blank" rel="noreferrer">
+                <strong>{{ content.contact.linkedin }}</strong>
+                <span>{{ content.contact.linkedinCta }}</span>
+              </a>
+            }
+            @if (whatsappLink && contact.phone) {
+              <a class="contact-card" [href]="whatsappLink" target="_blank" rel="noreferrer">
+                <strong>{{ content.contact.whatsapp }}</strong>
+                <span>{{ contact.phone }}</span>
+              </a>
+            }
+          </div>
+        </aside>
+      }
+    </div>
+
+    <button class="language-toggle" type="button" (click)="switchLanguage.emit()" [attr.aria-label]="content.language.switchTo">
+      <span class="language-flag">{{ regionCode }}</span>
+      <span>{{ content.language.code }}</span>
+    </button>
+  </div>
+</header>

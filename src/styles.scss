@@ -23,3 +23,26 @@ body {
   background: rgba(72, 245, 255, 0.28);
   color: #ffffff;
 }
+
+/* Shared subtitle / eyebrow style used across sections */
+.eyebrow {
+  margin: 0 0 16px;
+  color: #48f5ff;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Shared section container used by section components */
+.section-shell {
+  width: min(1220px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(70px, 9vw, 130px) 0;
+}
+
+@media (max-width: 900px) {
+  .section-shell {
+    width: min(100% - 32px, 720px);
+  }
+}

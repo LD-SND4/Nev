@@ -1,148 +1,22 @@
-<header class="site-header">
-  <a class="brand" href="#intro" aria-label="Go to Nev Research introduction">Nev Research</a>
-
-  <button class="nav-toggle" type="button" (click)="toggleNav()" [attr.aria-expanded]="navOpen" aria-label="Toggle navigation">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav class="main-nav" [class.is-open]="navOpen" aria-label="Main navigation">
-    <div class="mobile-nav-header" aria-hidden="true">
-      <span class="mobile-nav-brand">Nev Research</span>
-      <button class="mobile-nav-close" type="button" (click)="toggleNav()" aria-label="Close navigation">
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-    <a href="#about" (click)="closeNav()">{{ content.nav.about }}</a>
-    <a href="#experience" (click)="closeNav()">{{ content.nav.experience }}</a>
-    <a href="#skills" (click)="closeNav()">{{ content.nav.skills }}</a>
-    <a href="#calculator" (click)="closeNav()">{{ content.nav.calculator }}</a>
-    <a href="#team" (click)="closeNav()">{{ content.nav.team }}</a>
-    <a class="contact-link" [href]="'mailto:' + contact.email" (click)="closeNav()">{{ content.contact.button }}</a>
-
-    <div class="mobile-nav-actions">
-      <button class="language-toggle" type="button" (click)="switchLanguage()" [attr.aria-label]="content.language.switchTo">
-        <span class="language-flag">{{ regionCode }}</span>
-        <span>{{ content.language.code }}</span>
-      </button>
-    </div>
-  </nav>
-
-  <div class="header-actions">
-    <div class="contact-menu">
-      <button class="contact-button" type="button" (click)="toggleContact()" [attr.aria-expanded]="contactOpen">
-        {{ content.contact.button }}
-      </button>
-
-      @if (contactOpen) {
-        <aside class="contact-popover" [class.is-closing]="contactClosing" [attr.aria-label]="content.contact.aria">
-          <p class="contact-popover-title">{{ content.contact.title }}</p>
-          <div class="contact-actions">
-            <a class="contact-card" [href]="'mailto:' + contact.email">
-              <strong>{{ content.contact.email }}</strong>
-              <span>{{ contact.email }}</span>
-            </a>
-            @if (contact.linkedin) {
-              <a class="contact-card" [href]="contact.linkedin" target="_blank" rel="noreferrer">
-                <strong>{{ content.contact.linkedin }}</strong>
-                <span>{{ content.contact.linkedinCta }}</span>
-              </a>
-            }
-            @if (whatsappLink && contact.phone) {
-              <a class="contact-card" [href]="whatsappLink" target="_blank" rel="noreferrer">
-                <strong>{{ content.contact.whatsapp }}</strong>
-                <span>{{ contact.phone }}</span>
-              </a>
-            }
-          </div>
-        </aside>
-      }
-    </div>
-
-    <button class="language-toggle" type="button" (click)="switchLanguage()" [attr.aria-label]="content.language.switchTo">
-      <span class="language-flag">{{ regionCode }}</span>
-      <span>{{ content.language.code }}</span>
-    </button>
-  </div>
-</header>
+<app-site-header
+  [content]="content"
+  [contact]="contact"
+  [contactOpen]="contactOpen"
+  [contactClosing]="contactClosing"
+  [regionCode]="regionCode"
+  [navOpen]="navOpen"
+  [whatsappLink]="whatsappLink"
+  (toggleNav)="toggleNav()"
+  (closeNav)="closeNav()"
+  (toggleContact)="toggleContact()"
+  (switchLanguage)="switchLanguage()"
+></app-site-header>
 
 <main>
-  <section class="hero section-shell" id="intro">
-    <div class="hero-copy">
-      <h1>{{ content.hero.title }}</h1>
-      <div class="hero-actions">
-        <a class="primary-link" href="#experience">{{ content.hero.primaryCta }}</a>
-        <a class="secondary-link" href="#calculator">{{ content.hero.secondaryCta }}</a>
-      </div>
-    </div>
+  <app-hero [content]="content"></app-hero>
 
-  </section>
-
-  <section class="about section-shell" id="about">
-    <div class="about-heading">
-      <p class="eyebrow">{{ content.about.eyebrow }}</p>
-      <h2>{{ content.about.title }}</h2>
-    </div>
-    <div class="about-content">
-      <p>{{ content.about.body }}</p>
-      <div class="about-service-list" [attr.aria-label]="content.about.servicesLabel">
-        @for (service of content.hero.services; track service; let index = $index) {
-          <article class="about-service" tabindex="0" [attr.aria-label]="service.label + ': ' + service.description">
-            <span class="about-service-icon" [ngClass]="'about-service-icon-' + index" aria-hidden="true"></span>
-            <div>
-              <h3>{{ service.label }}</h3>
-              <p>{{ service.description }}</p>
-            </div>
-            <em>{{ service.description }}</em>
-          </article>
-        }
-      </div>
-      <a class="secondary-link about-results-link" href="#experience">{{ content.about.cta }}</a>
-    </div>
-  </section>
-
-  <section class="experience section-shell" id="experience">
-    <div class="section-heading">
-      <p class="eyebrow">{{ content.experience.eyebrow }}</p>
-      <h2>{{ content.experience.title }}</h2>
-    </div>
-
-    <div class="results-grid">
-      @for (item of experiences; track item.company + item.role + item.period) {
-        <article class="result-card">
-          <div class="result-card-topline">
-            <span>{{ item.period }}</span>
-            <span>{{ item.location }}</span>
-          </div>
-
-          <div>
-            <h3>{{ item.company }}</h3>
-            <p>{{ item.role }}</p>
-          </div>
-
-          @if (item.technologies?.length) {
-            <div class="tech-list" [attr.aria-label]="content.experience.skillsLabel">
-              @for (technology of item.technologies; track technology) {
-                <span>{{ technology }}</span>
-              }
-            </div>
-          }
-
-          <div class="result-details">
-            <strong>{{ content.experience.resultsLabel }}</strong>
-            <ul>
-              @for (point of item.highlights; track point) {
-                <li>{{ point }}</li>
-              }
-            </ul>
-          </div>
-        </article>
-      }
-    </div>
-  </section>
+  <app-about [content]="content" [services]="content.hero.services"></app-about>
+  <app-experience [content]="content" [experiences]="experiences"></app-experience>
 
   <section class="skills section-shell" id="skills">
     <div class="section-heading">
@@ -395,34 +269,5 @@
     </div>
   </section>
 
-  <section class="team section-shell" id="team">
-    <div class="section-heading">
-      <p class="eyebrow">{{ content.team.eyebrow }}</p>
-      <h2>{{ content.team.title }}</h2>
-    </div>
-
-    <div class="team-grid">
-      <article class="team-profile team-profile-founder">
-        <figure>
-          <img src="content/founder/7bba4909-7c5f-453c-829b-4bb287222216.png" alt="Leonardo Diaz, Founder of Nev Research" />
-        </figure>
-        <div>
-          <p class="eyebrow">{{ content.team.founderRole }}</p>
-          <h3>{{ content.team.founderName }}</h3>
-          <p>{{ content.team.founderBio }}</p>
-        </div>
-      </article>
-
-      <article class="team-profile team-profile-engineer">
-        <figure>
-          <img src="content/engineers/34362f85-3e52-440c-a32b-f83dd5f8a5fa.png" alt="Data engineer at Nev Research" />
-        </figure>
-        <div>
-          <p class="eyebrow">{{ content.team.engineerRole }}</p>
-          <h3>{{ content.team.engineerName }}</h3>
-          <p>{{ content.team.engineerBio }}</p>
-        </div>
-      </article>
-    </div>
-  </section>
+  <app-team [content]="content"></app-team>
 </main>

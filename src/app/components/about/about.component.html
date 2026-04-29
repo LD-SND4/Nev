@@ -1,0 +1,22 @@
+<section class="about section-shell" id="about">
+  <div class="about-heading">
+    <p class="eyebrow">{{ content.about.eyebrow }}</p>
+    <h2>{{ content.about.title }}</h2>
+  </div>
+  <div class="about-content">
+    <p>{{ content.about.body }}</p>
+    <div class="about-service-list" [attr.aria-label]="content.about.servicesLabel">
+      @for (service of services; track service; let index = $index) {
+        <article class="about-service" tabindex="0" [attr.aria-label]="service.label + ': ' + service.description">
+          <span class="about-service-icon" [ngClass]="'about-service-icon-' + index" aria-hidden="true"></span>
+          <div>
+            <h3>{{ service.label }}</h3>
+            <p>{{ service.description }}</p>
+          </div>
+          <em>{{ service.description }}</em>
+        </article>
+      }
+    </div>
+    <a class="secondary-link about-results-link" href="#experience">{{ content.about.cta }}</a>
+  </div>
+</section>

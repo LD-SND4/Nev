@@ -1,9 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { DEFAULT_ESTIMATE_TASKS, ProjectEstimateResult, ProjectTaskId, ProjectTimeUnit, calculateProjectEstimate } from './project-estimator';
+import { SiteHeaderComponent } from './components/site-header/site-header.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { AboutComponent } from './components/about/about.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { TeamComponent } from './components/team/team.component';
 
 type Profile = {
   name: string;
@@ -233,9 +238,10 @@ type GlobeRuntime = {
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SiteHeaderComponent, HeroComponent, AboutComponent, ExperienceComponent, TeamComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('technicalGlobeCanvas') private technicalGlobeCanvas?: ElementRef<HTMLCanvasElement>;

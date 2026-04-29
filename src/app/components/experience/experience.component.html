@@ -1,0 +1,39 @@
+<section class="experience section-shell" id="experience">
+  <div class="section-heading">
+    <p class="eyebrow">{{ content.experience.eyebrow }}</p>
+    <h2>{{ content.experience.title }}</h2>
+  </div>
+
+  <div class="results-grid">
+    @for (item of experiences; track item.company + item.role + item.period) {
+      <article class="result-card">
+        <div class="result-card-topline">
+          <span>{{ item.period }}</span>
+          <span>{{ item.location }}</span>
+        </div>
+
+        <div>
+          <h3>{{ item.company }}</h3>
+          <p>{{ item.role }}</p>
+        </div>
+
+        @if (item.technologies?.length) {
+          <div class="tech-list" [attr.aria-label]="content.experience.skillsLabel">
+            @for (technology of item.technologies; track technology) {
+              <span>{{ technology }}</span>
+            }
+          </div>
+        }
+
+        <div class="result-details">
+          <strong>{{ content.experience.resultsLabel }}</strong>
+          <ul>
+            @for (point of item.highlights; track point) {
+              <li>{{ point }}</li>
+            }
+          </ul>
+        </div>
+      </article>
+    }
+  </div>
+</section>
