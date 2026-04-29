@@ -53,7 +53,9 @@
   "about": {
     "eyebrow": "Nosotros",
     "title": "Entrega SaaS práctica para equipos que necesitan software confiable.",
-    "body": "Nev Research acompaña a clientes en el diseño, desarrollo y mantenimiento de software que sostiene operaciones reales: interfaces de producto, flujos backend, análisis de datos, automatización QA, reportes y mantenimiento a largo plazo. Trabajamos con alcance claro, entrega constante y sistemas que siguen siendo entendibles después del lanzamiento."
+    "body": "Nev Research acompaña a clientes en el diseño, desarrollo y mantenimiento de software que sostiene operaciones reales: interfaces de producto, flujos backend, análisis de datos, automatización QA, reportes y mantenimiento a largo plazo. Trabajamos con alcance claro, entrega constante y sistemas que siguen siendo entendibles después del lanzamiento.",
+    "cta": "Ver resultados",
+    "servicesLabel": "Servicios de entrega de Nev Research"
   },
   "experience": {
     "eyebrow": "Resultados",
@@ -279,6 +281,10 @@
     "timelineAmount": "Cantidad de tiempo",
     "timelineUnit": "Unidad de tiempo",
     "footnote": "Esta estimación es orientativa y útil para conversar sobre el alcance. El precio final depende de la profundidad del producto, integraciones, revisiones y expectativas de entrega.",
+    "moreOptions": "Más opciones",
+    "moreOptionsCategory": "Alcance adicional",
+    "moreOptionsEmpty": "Abre la lista guardada para ver más opciones de entrega, datos y soporte.",
+    "moreOptionsSelected": "{count} opción(es) extra seleccionada(s)",
     "summaryLabel": "Rango estimado del proyecto",
     "availableBudget": "Presupuesto disponible",
     "selectedWorkstreams": "Líneas de trabajo",
@@ -303,7 +309,8 @@
     "recommendations": {
       "large": "Se recomiendan 10-14 semanas",
       "medium": "Se recomiendan 6-10 semanas",
-      "small": "Se recomiendan 3-6 semanas"
+      "small": "Se recomiendan 3-6 semanas",
+      "range": "Se recomiendan {min}-{max} semanas"
     },
     "budgetGap": {
       "above": "{amount} disponibles sobre la estimación",

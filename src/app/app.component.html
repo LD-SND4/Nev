@@ -63,29 +63,29 @@
       </div>
     </div>
 
-    <aside class="hero-support" aria-label="Nev Research service focus">
-      <p>{{ content.hero.support }}</p>
-      <div class="hero-service-grid">
-        @for (service of content.hero.services; track service) {
-          <button class="hero-service-chip" type="button">
-            <span>{{ service.label }}</span>
-            <em>{{ service.description }}</em>
-          </button>
-        }
-      </div>
-      <div class="hero-actions">
-        <a class="secondary-link" href="#about">{{ content.hero.supportCta }}</a>
-      </div>
-    </aside>
-
   </section>
 
   <section class="about section-shell" id="about">
-    <div>
+    <div class="about-heading">
       <p class="eyebrow">{{ content.about.eyebrow }}</p>
       <h2>{{ content.about.title }}</h2>
     </div>
-    <p>{{ content.about.body }}</p>
+    <div class="about-content">
+      <p>{{ content.about.body }}</p>
+      <div class="about-service-list" [attr.aria-label]="content.about.servicesLabel">
+        @for (service of content.hero.services; track service; let index = $index) {
+          <article class="about-service" tabindex="0" [attr.aria-label]="service.label + ': ' + service.description">
+            <span class="about-service-icon" [ngClass]="'about-service-icon-' + index" aria-hidden="true"></span>
+            <div>
+              <h3>{{ service.label }}</h3>
+              <p>{{ service.description }}</p>
+            </div>
+            <em>{{ service.description }}</em>
+          </article>
+        }
+      </div>
+      <a class="secondary-link about-results-link" href="#experience">{{ content.about.cta }}</a>
+    </div>
   </section>
 
   <section class="experience section-shell" id="experience">
@@ -258,7 +258,7 @@
         <div class="task-picker">
           <h3>{{ content.calculator.scopeTitle }}</h3>
           <div class="task-list">
-            @for (task of calculatorTasks; track task.key) {
+            @for (task of visibleCalculatorTasks; track task.key) {
               <label class="task-card" [class.task-card-data]="task.isData" [class.is-selected]="calculator[task.key]">
                 <input type="checkbox" [(ngModel)]="calculator[task.key]" />
                 <span class="task-check" aria-hidden="true"></span>
@@ -269,6 +269,24 @@
                 </span>
               </label>
             }
+
+            <div class="task-card task-card-more" [class.is-open]="moreOptionsOpen" [class.has-selection]="overflowSelectedCount">
+              <button type="button" class="task-more-trigger" (click)="toggleMoreOptions()" [attr.aria-expanded]="moreOptionsOpen" aria-label="Toggle more task options">
+                <span class="task-more-plus" aria-hidden="true">+</span>
+                <span class="task-content">
+                  <strong>{{ content.calculator.moreOptions }}</strong>
+                  <em>{{ content.calculator.moreOptionsCategory }}</em>
+                  <span>
+                    @if (overflowSelectedCount) {
+                      {{ moreOptionsSummary }}
+                    } @else {
+                      {{ content.calculator.moreOptionsEmpty }}
+                    }
+                  </span>
+                </span>
+              </button>
+
+            </div>
           </div>
           @if (!selectedTaskCount) {
             <aside class="scope-help-popout">
@@ -295,14 +313,15 @@
               }
             </div>
           </div>
+          <p class="calculator-footnote">{{ content.calculator.footnote }}</p>
         </div>
-
-        <p class="calculator-footnote">{{ content.calculator.footnote }}</p>
       </div>
 
       <aside class="calculator-summary">
-        <p class="summary-label">{{ content.calculator.summaryLabel }}</p>
-        <strong class="summary-total">{{ estimateRange }}</strong>
+        <div class="summary-estimate">
+          <p class="summary-label">{{ content.calculator.summaryLabel }}</p>
+          <strong class="summary-total">{{ estimateRange }}</strong>
+        </div>
 
         <div class="summary-divider"></div>
 
@@ -340,6 +359,23 @@
           {{ content.calculator.startConversation }}
         </a>
       </aside>
+
+      @if (moreOptionsOpen) {
+        <button class="calculator-overlay" type="button" (click)="toggleMoreOptions()" aria-label="Close more task options"></button>
+        <div class="task-more-popout">
+          @for (task of overflowCalculatorTasks; track task.key) {
+            <label class="task-more-option" [class.is-selected]="calculator[task.key]">
+              <input type="checkbox" [(ngModel)]="calculator[task.key]" />
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-content">
+                <strong>{{ content.calculator.tasks[task.key].label }}</strong>
+                <em>{{ content.calculator.tasks[task.key].category }}</em>
+                <span>{{ content.calculator.tasks[task.key].description }}</span>
+              </span>
+            </label>
+          }
+        </div>
+      }
     </div>
   </section>
 

@@ -53,7 +53,9 @@
   "about": {
     "eyebrow": "About",
     "title": "Practical SaaS delivery for teams that need reliable software.",
-    "body": "Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch."
+    "body": "Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.",
+    "cta": "See client results",
+    "servicesLabel": "Nev Research delivery services"
   },
   "experience": {
     "eyebrow": "Client results",
@@ -94,6 +96,10 @@
     "timelineAmount": "Timeline amount",
     "timelineUnit": "Timeline unit",
     "footnote": "This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.",
+    "moreOptions": "More options",
+    "moreOptionsCategory": "Additional scope",
+    "moreOptionsEmpty": "Open the saved task list for more delivery, data and support options.",
+    "moreOptionsSelected": "{count} extra {option} selected",
     "summaryLabel": "Estimated project range",
     "availableBudget": "Available budget",
     "selectedWorkstreams": "Selected workstreams",
@@ -118,7 +124,8 @@
     "recommendations": {
       "large": "10-14 weeks recommended",
       "medium": "6-10 weeks recommended",
-      "small": "3-6 weeks recommended"
+      "small": "3-6 weeks recommended",
+      "range": "{min}-{max} weeks recommended"
     },
     "budgetGap": {
       "above": "{amount} available above estimate",

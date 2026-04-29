@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewCh
 import { FormsModule } from '@angular/forms';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { DEFAULT_ESTIMATE_TASKS, ProjectEstimateResult, ProjectTaskId, ProjectTimeUnit, calculateProjectEstimate } from './project-estimator';
 
 type Profile = {
   name: string;
@@ -49,8 +50,8 @@ type SkillDetails = {
   related: string[];
 };
 
-type CalculatorTaskKey = 'frontend' | 'backend' | 'testing' | 'maintenance' | 'dataAnalysis' | 'automation' | 'etlScraping' | 'reporting';
-type TimelineUnit = 'days' | 'weeks' | 'months';
+type CalculatorTaskKey = ProjectTaskId;
+type TimelineUnit = ProjectTimeUnit;
 type LanguageCode = 'en' | 'es';
 type CalculatorTask = {
   key: CalculatorTaskKey;
@@ -65,7 +66,7 @@ type SiteContent = {
   nav: Record<'about' | 'experience' | 'skills' | 'calculator' | 'team', string>;
   contact: Record<'button' | 'aria' | 'title' | 'email' | 'linkedin' | 'linkedinCta' | 'whatsapp', string>;
   hero: { title: string; primaryCta: string; secondaryCta: string; support: string; supportCta: string; services: { label: string; description: string }[] };
-  about: { eyebrow: string; title: string; body: string };
+  about: { eyebrow: string; title: string; body: string; cta: string; servicesLabel: string };
   experience: { eyebrow: string; title: string; skillsLabel: string; resultsLabel: string; items?: Experience[]; translations?: Record<string, Partial<Experience>> };
   skills: Record<'eyebrow' | 'title' | 'rotateHint' | 'hoverHint' | 'technicalTitle' | 'technicalDescription' | 'deliveryTitle' | 'deliveryDescription' | 'upcomingTitle' | 'upcomingDescription' | 'upcomingStatus' | 'upcomingBody' | 'yearsUsed' | 'matchedExperience' | 'connectedTo' | 'coreCapability', string> & { items?: Skill[]; notes?: Record<string, string> };
   calculator: {
@@ -83,6 +84,10 @@ type SiteContent = {
     timelineAmount: string;
     timelineUnit: string;
     footnote: string;
+    moreOptions: string;
+    moreOptionsCategory: string;
+    moreOptionsEmpty: string;
+    moreOptionsSelected: string;
     summaryLabel: string;
     availableBudget: string;
     selectedWorkstreams: string;
@@ -92,7 +97,7 @@ type SiteContent = {
     units: Record<TimelineUnit, string>;
     singularUnits: Record<TimelineUnit, string>;
     status: Record<'comfortable' | 'focused' | 'adjust', string>;
-    recommendations: Record<'large' | 'medium' | 'small', string>;
+    recommendations: Record<'large' | 'medium' | 'small' | 'range', string>;
     budgetGap: Record<'above' | 'under', string>;
     tasks: Record<CalculatorTaskKey, Omit<CalculatorTask, 'key' | 'isData'>>;
   };
@@ -120,7 +125,9 @@ const DEFAULT_CONTENT: SiteContent = {
   about: {
     eyebrow: 'About',
     title: 'Practical SaaS delivery for teams that need reliable software.',
-    body: 'Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.'
+    body: 'Nev Research partners with clients to design, build and maintain software that supports real operations: product interfaces, backend workflows, data analysis, QA automation, reporting routines and long-term maintenance. We focus on clear scope, dependable delivery and systems that remain understandable after launch.',
+    cta: 'See client results',
+    servicesLabel: 'Nev Research delivery services'
   },
   experience: { eyebrow: 'Client results', title: 'Delivery proof across product, data and software teams.', skillsLabel: 'Skills used', resultsLabel: 'Results and delivery', items: [] },
   skills: {
@@ -156,6 +163,10 @@ const DEFAULT_CONTENT: SiteContent = {
     timelineAmount: 'Timeline amount',
     timelineUnit: 'Timeline unit',
     footnote: 'This estimate is directional and useful for scope conversations. Final pricing depends on product depth, integrations, revisions, and handoff expectations.',
+    moreOptions: 'More options',
+    moreOptionsCategory: 'Additional scope',
+    moreOptionsEmpty: 'Open the saved task list for more delivery, data and support options.',
+    moreOptionsSelected: '{count} extra {option} selected',
     summaryLabel: 'Estimated project range',
     availableBudget: 'Available budget',
     selectedWorkstreams: 'Selected workstreams',
@@ -165,7 +176,7 @@ const DEFAULT_CONTENT: SiteContent = {
     units: { days: 'Days', weeks: 'Weeks', months: 'Months' },
     singularUnits: { days: 'day', weeks: 'week', months: 'month' },
     status: { comfortable: 'Comfortable budget range', focused: 'Feasible with focused scope', adjust: 'Scope or timeline should be adjusted' },
-    recommendations: { large: '10-14 weeks recommended', medium: '6-10 weeks recommended', small: '3-6 weeks recommended' },
+    recommendations: { large: '10-14 weeks recommended', medium: '6-10 weeks recommended', small: '3-6 weeks recommended', range: '{min}-{max} weeks recommended' },
     budgetGap: { above: '{amount} available above estimate', under: '{amount} under the suggested range' },
     tasks: {
       frontend: { label: 'Frontend delivery', category: 'Product UI', description: 'Interfaces, landing flows, dashboards, responsive UI and Angular or React product screens.' },
@@ -258,6 +269,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   contactOpen = false;
   contactClosing = false;
   navOpen = false;
+  moreOptionsOpen = false;
   currentLanguage: LanguageCode = 'en';
   regionCode = 'US';
   content: SiteContent = DEFAULT_CONTENT;
@@ -277,15 +289,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   private readonly calculatorTaskConfig: Pick<CalculatorTask, 'key' | 'isData'>[] = [
-    { key: 'frontend' },
-    { key: 'backend' },
-    { key: 'testing' },
-    { key: 'maintenance' },
-    { key: 'dataAnalysis', isData: true },
-    { key: 'automation', isData: true },
-    { key: 'etlScraping', isData: true },
-    { key: 'reporting', isData: true }
-  ];
+    ...DEFAULT_ESTIMATE_TASKS.map((task) => ({ key: task.id, isData: ['dataAnalysis', 'automation', 'etlScraping', 'reporting'].includes(task.id) }))
+  ] as Pick<CalculatorTask, 'key' | 'isData'>[];
   readonly timelineUnits: TimelineUnit[] = ['days', 'weeks', 'months'];
   calculatorTasks: CalculatorTask[] = this.createCalculatorTasks(DEFAULT_CONTENT);
 
@@ -323,16 +328,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get selectedTaskCount(): number {
-    return [
-      this.calculator.frontend,
-      this.calculator.backend,
-      this.calculator.testing,
-      this.calculator.maintenance,
-      this.calculator.dataAnalysis,
-      this.calculator.automation,
-      this.calculator.etlScraping,
-      this.calculator.reporting
-    ].filter(Boolean).length;
+    return this.calculatorTasks.filter((task) => this.calculator[task.key]).length;
   }
 
   get selectedTaskLabels(): string[] {
@@ -343,52 +339,68 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.calculatorTasks.filter((task) => this.calculator[task.key]);
   }
 
+  get projectEstimate(): ProjectEstimateResult {
+    return calculateProjectEstimate({
+      availableBudget: this.calculator.budget,
+      selectedTaskIds: this.selectedCalculatorTasks.map((task) => task.key),
+      requestedTime: this.calculator.timelineValue,
+      timeUnit: this.calculator.timelineUnit,
+      complexity: 'medium',
+      riskLevel: 'medium',
+      hourlyRate: 20,
+      companyMargin: 1.35
+    });
+  }
+
+  get visibleCalculatorTasks(): CalculatorTask[] {
+    return this.calculatorTasks.slice(0, 2);
+  }
+
+  get overflowCalculatorTasks(): CalculatorTask[] {
+    return this.calculatorTasks.slice(2);
+  }
+
+  get overflowSelectedCount(): number {
+    return this.overflowCalculatorTasks.filter((task) => this.calculator[task.key]).length;
+  }
+
+  get moreOptionsSummary(): string {
+    const option = this.overflowSelectedCount === 1 ? 'option' : 'options';
+    return this.content.calculator.moreOptionsSelected
+      .replace('{count}', this.overflowSelectedCount.toString())
+      .replace('{option}', option);
+  }
+
   get timelineInWeeks(): number {
-    switch (this.calculator.timelineUnit) {
-      case 'days': return this.calculator.timelineValue / 5;
-      case 'months': return this.calculator.timelineValue * 4;
-      default: return this.calculator.timelineValue;
-    }
+    return this.projectEstimate.requestedWeeks;
   }
 
   get estimatedProjectInvestment(): number {
-    const base = 700;
-    const taskCost =
-      (this.calculator.frontend ? 1200 : 0) +
-      (this.calculator.backend ? 1400 : 0) +
-      (this.calculator.testing ? 550 : 0) +
-      (this.calculator.maintenance ? 420 : 0) +
-      (this.calculator.dataAnalysis ? 780 : 0) +
-      (this.calculator.automation ? 720 : 0) +
-      (this.calculator.etlScraping ? 860 : 0) +
-      (this.calculator.reporting ? 620 : 0);
-    const complexityBuffer = Math.max(this.selectedTaskCount - 2, 0) * 180;
-    const timelineCost = Math.max(this.timelineInWeeks - 4, 0) * 95;
-    const rushMultiplier = this.timelineInWeeks <= 1 ? 1.45 : this.timelineInWeeks <= 2 ? 1.3 : this.timelineInWeeks <= 4 ? 1.12 : 1;
-    return Math.round((base + taskCost + complexityBuffer + timelineCost) * rushMultiplier);
+    return this.projectEstimate.referenceEstimate;
   }
 
   get estimateRange(): string {
-    const low = Math.round(this.estimatedProjectInvestment * 0.92 / 100) * 100;
-    const high = Math.round(this.estimatedProjectInvestment * 1.14 / 100) * 100;
-    return `$${low.toLocaleString()} - $${high.toLocaleString()}`;
+    return `$${this.projectEstimate.minEstimate.toLocaleString()} - $${this.projectEstimate.maxEstimate.toLocaleString()}`;
   }
 
   get budgetStatus(): string {
-    const difference = this.calculator.budget - this.estimatedProjectInvestment;
-    if (difference >= 2500) return this.content.calculator.status.comfortable;
-    if (difference >= 0) return this.content.calculator.status.focused;
-    return this.content.calculator.status.adjust;
+    switch (this.projectEstimate.status) {
+      case 'Viable with focused scope': return this.content.calculator.status.focused;
+      case 'Viable with adjustments': return this.content.calculator.status.adjust;
+      default: return this.content.calculator.status.adjust;
+    }
   }
 
   get suggestedTimeline(): string {
-    if (this.selectedTaskCount >= 4) return this.content.calculator.recommendations.large;
-    if (this.selectedTaskCount === 3) return this.content.calculator.recommendations.medium;
-    return this.content.calculator.recommendations.small;
+    const match = this.projectEstimate.recommendedTimeline.match(/^(\d+)-(\d+)/);
+    if (!match) return this.projectEstimate.recommendedTimeline;
+    return this.content.calculator.recommendations.range
+      .replace('{min}', match[1])
+      .replace('{max}', match[2]);
   }
 
   get budgetGap(): string {
-    const delta = this.calculator.budget - this.estimatedProjectInvestment;
+    const delta = this.projectEstimate.budgetDifference;
     const amount = `$${Math.abs(delta).toLocaleString()}`;
     const template = delta >= 0 ? this.content.calculator.budgetGap.above : this.content.calculator.budgetGap.under;
     return template.replace('{amount}', amount);
@@ -471,6 +483,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   closeNav(): void {
     this.navOpen = false;
+  }
+
+  toggleMoreOptions(): void {
+    this.moreOptionsOpen = !this.moreOptionsOpen;
   }
 
   async switchLanguage(): Promise<void> {
@@ -629,17 +645,19 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const theme = this.globeTheme(kind);
     state.scene = new THREE.Scene();
+    const lockedDistance = 12.5;
     state.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    state.camera.position.set(0, 0, 15);
+    state.camera.position.set(0, 0, lockedDistance);
     state.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas });
     state.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     state.controls = new OrbitControls(state.camera, canvas);
     state.controls.enableDamping = true;
     state.controls.enablePan = false;
-    state.controls.minDistance = 12.5;
-    state.controls.maxDistance = 24;
+    state.controls.enableZoom = false;
+    state.controls.minDistance = lockedDistance;
+    state.controls.maxDistance = lockedDistance;
     state.controls.rotateSpeed = 0.55;
-    canvas.style.touchAction = 'pan-y';
+    canvas.style.touchAction = 'none';
 
     state.scene.add(new THREE.AmbientLight(theme.hint, 1.2));
     const keyLight = new THREE.PointLight(theme.hint, 20, 30);
@@ -754,10 +772,27 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this.hoveredGlobe = kind;
         this.hoveredSkill = skill;
         this.hoveredSkillDetails = skill ? this.createSkillDetails(skill) : null;
-        const left = Math.min(Math.max(event.clientX - bounds.left, 160), bounds.width - 160);
-        const top = Math.min(Math.max(event.clientY - bounds.top, 110), bounds.height - 18);
-        this.skillPopoverStyle = { left: `${left}px`, top: `${top}px` };
+        this.skillPopoverStyle = skill ? this.createSkillPopoverStyle(event, bounds) : {};
       });
+    };
+  }
+
+  private createSkillPopoverStyle(event: PointerEvent, bounds: DOMRect): Record<string, string> {
+    const margin = 16;
+    const offset = 14;
+    const width = Math.min(310, bounds.width - margin * 2);
+    const estimatedHeight = 330;
+    const x = event.clientX - bounds.left;
+    const y = event.clientY - bounds.top;
+    const preferredTop = y < estimatedHeight + margin + offset ? y + offset : y - estimatedHeight - offset;
+    const left = Math.min(Math.max(x - width / 2, margin), bounds.width - width - margin);
+    const maxTop = Math.max(margin, bounds.height - estimatedHeight - margin);
+    const top = Math.min(Math.max(preferredTop, margin), maxTop);
+
+    return {
+      left: `${left}px`,
+      top: `${top}px`,
+      width: `${width}px`
     };
   }
 
