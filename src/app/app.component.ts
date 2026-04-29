@@ -278,7 +278,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     budget: 4500,
     frontend: true,
     backend: false,
-    testing: true,
+    testing: false,
     maintenance: false,
     dataAnalysis: false,
     automation: false,
@@ -307,7 +307,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private readonly zone: NgZone) {}
 
   get budgetPercent(): number {
-    return ((this.calculator.budget - 2000) / 5000) * 100;
+    return ((this.calculator.budget - 700) / 4300) * 100;
   }
 
   get budgetTone(): string {
@@ -496,6 +496,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   adjustTimeline(delta: number): void {
     const nextValue = this.calculator.timelineValue + delta;
     this.calculator.timelineValue = Math.min(Math.max(nextValue, 1), 24);
+  }
+
+  validateTimelineValue(): void {
+    if (this.calculator.timelineValue < 1) {
+      this.calculator.timelineValue = 1;
+    }
+    if (this.calculator.timelineValue > 24) {
+      this.calculator.timelineValue = 24;
+    }
   }
 
   private detectPreferredLanguage(): LanguageCode {

@@ -8,11 +8,27 @@
   </button>
 
   <nav class="main-nav" [class.is-open]="navOpen" aria-label="Main navigation">
+    <div class="mobile-nav-header" aria-hidden="true">
+      <span class="mobile-nav-brand">Nev Research</span>
+      <button class="mobile-nav-close" type="button" (click)="toggleNav()" aria-label="Close navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
     <a href="#about" (click)="closeNav()">{{ content.nav.about }}</a>
     <a href="#experience" (click)="closeNav()">{{ content.nav.experience }}</a>
     <a href="#skills" (click)="closeNav()">{{ content.nav.skills }}</a>
     <a href="#calculator" (click)="closeNav()">{{ content.nav.calculator }}</a>
     <a href="#team" (click)="closeNav()">{{ content.nav.team }}</a>
+    <a class="contact-link" [href]="'mailto:' + contact.email" (click)="closeNav()">{{ content.contact.button }}</a>
+
+    <div class="mobile-nav-actions">
+      <button class="language-toggle" type="button" (click)="switchLanguage()" [attr.aria-label]="content.language.switchTo">
+        <span class="language-flag">{{ regionCode }}</span>
+        <span>{{ content.language.code }}</span>
+      </button>
+    </div>
   </nav>
 
   <div class="header-actions">
@@ -238,17 +254,17 @@
           <div class="budget-input" [class]="'budget-tone-' + budgetTone" [style]="budgetSliderStyle">
             <strong>{{ formattedBudget }}</strong>
             <div class="budget-slider">
-              <input type="range" min="2000" max="7000" step="500" [(ngModel)]="calculator.budget" />
+              <input type="range" min="700" max="5000" step="100" [(ngModel)]="calculator.budget" />
               <div class="budget-orbs" aria-hidden="true">
-                @for (value of [2000, 3000, 4000, 5000, 6000, 7000]; track value) {
+                @for (value of [700, 1500, 2300, 3100, 3900, 4700]; track value) {
                   <span [class.is-active]="calculator.budget >= value"></span>
                 }
               </div>
             </div>
             <div class="budget-scale" aria-hidden="true">
-              <span>$2k</span>
-              <span>$4.5k</span>
-              <span>$7k</span>
+              <span>$700</span>
+              <span>$2.8k</span>
+              <span>$5k</span>
             </div>
           </div>
         </label>
@@ -302,7 +318,7 @@
           <div class="timeline-inputs">
             <div class="timeline-stepper">
               <button type="button" (click)="adjustTimeline(-1)" [attr.aria-label]="content.calculator.decreaseTimeline">-</button>
-              <input type="number" min="1" max="24" [(ngModel)]="calculator.timelineValue" [attr.aria-label]="content.calculator.timelineAmount" />
+              <input type="number" min="1" max="24" [(ngModel)]="calculator.timelineValue" [attr.aria-label]="content.calculator.timelineAmount" (input)="validateTimelineValue()" />
               <button type="button" (click)="adjustTimeline(1)" [attr.aria-label]="content.calculator.increaseTimeline">+</button>
             </div>
             <div class="timeline-units" role="group" [attr.aria-label]="content.calculator.timelineUnit">
