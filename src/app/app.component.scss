@@ -365,8 +365,7 @@ main {
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(5, 10, 19, 0.94) 0%, rgba(5, 10, 19, 0.74) 42%, rgba(5, 10, 19, 0.35) 76%, rgba(5, 10, 19, 0.62) 100%),
-    linear-gradient(180deg, rgba(5, 10, 19, 0.18) 0%, rgba(5, 10, 19, 0.2) 54%, #050a13 100%),
-    url("../content/assets/background.png") center / cover no-repeat;
+    linear-gradient(180deg, rgba(5, 10, 19, 0.18) 0%, rgba(5, 10, 19, 0.2) 54%, #050a13 100%);
 }
 
 .hero::after {
@@ -802,9 +801,7 @@ main {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 48%, rgba(72, 245, 255, 0.16), rgba(132, 255, 176, 0.08) 32%, rgba(12, 21, 36, 0.1) 62%),
-    radial-gradient(circle at 50% 50%, rgba(20, 34, 57, 0.94), rgba(5, 10, 19, 0.92) 72%);
+  background: none;
   pointer-events: none;
 }
 
@@ -934,10 +931,7 @@ main {
 }
 
 .skill-globe-upcoming::before {
-  opacity: 0.35;
-  background:
-    radial-gradient(circle at 50% 48%, rgba(184, 78, 255, 0.24), rgba(137, 47, 207, 0.13) 35%, rgba(12, 21, 36, 0.08) 68%),
-    radial-gradient(circle at 50% 50%, rgba(36, 12, 61, 0.92), rgba(5, 10, 19, 0.9) 74%);
+  opacity: 0;
 }
 
 .skill-globe-upcoming {
@@ -1003,6 +997,11 @@ main {
     radial-gradient(circle at 10% 0%, rgba(72, 245, 255, 0.1), transparent 42%),
     radial-gradient(circle at 100% 90%, rgba(132, 255, 176, 0.08), transparent 40%);
   box-shadow: 0 24px 62px rgba(0, 0, 0, 0.32);
+}
+
+.calculator-shell.is-options-open {
+  border-color: transparent;
+  box-shadow: 0 0 0 100vmax rgba(3, 7, 13, 0.58), 0 24px 62px rgba(0, 0, 0, 0.32);
 }
 
 .calculator-inputs,
@@ -1300,7 +1299,10 @@ main {
   position: absolute;
   inset: 0;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.48);
+  padding: 0;
+  border: 0;
+  background: rgba(3, 7, 13, 0.86);
+  appearance: none;
 }
 
 .task-more-popout {

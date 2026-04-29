@@ -231,7 +231,7 @@
       <h2>{{ content.calculator.title }}</h2>
     </div>
 
-    <div class="calculator-shell">
+    <div class="calculator-shell" [class.is-options-open]="moreOptionsOpen">
       <div class="calculator-inputs">
         <label class="budget-field">
           <span>{{ content.calculator.budgetLabel }}</span>
