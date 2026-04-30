@@ -1,5 +1,5 @@
 <header class="site-header" [class.is-nav-open]="navOpen">
-  <a class="brand" href="#intro" aria-label="Go to Nev Research introduction">Nev Research</a>
+  <a class="brand" href="#intro" target="_blank" rel="noreferrer" aria-label="Go to Nev Research introduction">Nev Research</a>
 
   <button class="nav-toggle" type="button" (click)="toggleNav.emit()" [attr.aria-expanded]="navOpen" aria-label="Toggle navigation">
     <span></span>
@@ -16,15 +16,15 @@
       </button>
     </div>
     <div class="mobile-nav-links">
-      <a class="nav-link" href="#about" (click)="closeNav.emit()">{{ content.nav.about }}</a>
-      <a class="nav-link" href="#experience" (click)="closeNav.emit()">{{ content.nav.experience }}</a>
-      <a class="nav-link" href="#skills" (click)="closeNav.emit()">{{ content.nav.skills }}</a>
-      <a class="nav-link" href="#calculator" (click)="closeNav.emit()">{{ content.nav.calculator }}</a>
-      <a class="nav-link" href="#team" (click)="closeNav.emit()">{{ content.nav.team }}</a>
+      <a class="nav-link" href="#about" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.nav.about }}</a>
+      <a class="nav-link" href="#experience" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.nav.experience }}</a>
+      <a class="nav-link" href="#skills" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.nav.skills }}</a>
+      <a class="nav-link" href="#calculator" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.nav.calculator }}</a>
+      <a class="nav-link" href="#team" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.nav.team }}</a>
     </div>
 
     <div class="mobile-nav-actions">
-      <a class="mobile-nav-button" [href]="'mailto:' + contact.email" (click)="closeNav.emit()">{{ content.contact.button }}</a>
+      <a class="mobile-nav-button" [href]="'mailto:' + contact.email" target="_blank" rel="noreferrer" (click)="closeNav.emit()">{{ content.contact.button }}</a>
       <button class="mobile-nav-button mobile-nav-language" type="button" (click)="switchLanguage.emit(); closeNav.emit()" [attr.aria-label]="content.language.switchTo">
         <span>{{ content.language.code }}</span>
         <span class="mobile-language-meta">{{ regionCode }}</span>
@@ -42,7 +42,7 @@
         <aside class="contact-popover" [class.is-closing]="contactClosing" [attr.aria-label]="content.contact.aria">
           <p class="contact-popover-title">{{ content.contact.title }}</p>
           <div class="contact-actions">
-            <a class="contact-card" [href]="'mailto:' + contact.email">
+            <a class="contact-card" [href]="'mailto:' + contact.email" target="_blank" rel="noreferrer">
               <strong>{{ content.contact.email }}</strong>
               <span>{{ contact.email }}</span>
             </a>

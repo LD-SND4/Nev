@@ -182,7 +182,7 @@
             <aside class="scope-help-popout">
               <strong>{{ content.calculator.guidanceTitle }}</strong>
               <p>{{ content.calculator.guidanceBody }}</p>
-              <a [href]="'mailto:' + contact.email + '?subject=Project%20Guidance%20Request'">{{ content.calculator.guidanceCta }}</a>
+              <a [href]="'mailto:' + contact.email + '?subject=Project%20Guidance%20Request'" target="_blank" rel="noreferrer">{{ content.calculator.guidanceCta }}</a>
             </aside>
           }
         </div>
@@ -245,7 +245,7 @@
           }
         </div>
 
-        <a class="summary-action" [href]="'mailto:' + contact.email + '?subject=Project%20Estimate%20Request'">
+        <a class="summary-action" [href]="'mailto:' + contact.email + '?subject=Project%20Estimate%20Request'" target="_blank" rel="noreferrer">
           {{ content.calculator.startConversation }}
         </a>
       </aside>
